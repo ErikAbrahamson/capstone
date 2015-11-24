@@ -11,6 +11,7 @@ var express = require('express'),
     session = require('express-session'),
     config = require('./_config.js'),
     localStrategy = require('passport-local').Strategy;
+    require('dotenv').load();
 
 mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
 
