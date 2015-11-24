@@ -8,6 +8,7 @@ var express = require('express'),
     hash = require('bcrypt-nodejs'),
     path = require('path'),
     passport = require('passport'),
+    session = require('express-session'),
     localStrategy = require('passport-local' ).Strategy;
 
 // mongoose
@@ -34,8 +35,9 @@ app.use(require('express-session')({
     saveUninitialized: false
 }));
 app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(passport.session());
+app.use(session.session());
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // configure passport
 passport.use(new localStrategy(User.authenticate()));
