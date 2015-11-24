@@ -11,7 +11,7 @@ var express = require('express'),
     session = require('express-session'),
     localStrategy = require('passport-local').Strategy;
 
-mongoose.connect('mongodb://localhost/capstone');
+mongoose.connect(config.MONGO_URI[app.settings.env]);
 
 var User = require('./models/user.js');
 var app = express();
@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
-// error hndlers
+// error handlers
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
