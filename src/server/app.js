@@ -1,54 +1,67 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var routes = require('./routes/index.js');
-var users = require('./routes/users.js');
+// dependencies
+var express = require('express'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    expressSession = require('express-session'),
+    mongoose = require('mongoose'),
+    hash = require('bcrypt-nodejs'),
+    path = require('path'),
+    passport = require('passport'),
+    localStrategy = require('passport-local' ).Strategy;
 
+// mongoose
+mongoose.connect('mongodb://localhost/capstone');
+
+// user schema/model
+var User = require('./models/user.js');
+
+// create instance of express
 var app = express();
 
-// *** config middleware *** //
+// require routes
+var routes = require('./routes/index.js');
+
+// define middleware
+app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
 
-// *** main routes *** //
-app.use('/', routes);
-app.use('/users', users);
+// configure passport
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+// routes
+app.use('/user/', routes);
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
-// *** error handlers *** //
+// error hndlers
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.send('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
-  res.send('error', {
+  res.end(JSON.stringify({
     message: err.message,
     error: {}
-  });
+  }));
 });
 
 module.exports = app;

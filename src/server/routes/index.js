@@ -1,8 +1,7 @@
 var express = require('express'),
     router = express.Router(),
-    passport = require('passport'),
-    User = require('../models/user.js'),
-    Task = require('../models/task.js');
+    passport = require('passport');
+    User = require('../models/user.js');
 
 router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../../client', 'index.html'));
