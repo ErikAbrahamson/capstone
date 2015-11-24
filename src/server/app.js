@@ -9,7 +9,7 @@ var express = require('express'),
     path = require('path'),
     passport = require('passport'),
     session = require('express-session'),
-    config = require('./config.js'),
+    config = require('./_config.js'),
     localStrategy = require('passport-local').Strategy;
 
 mongoose.connect(config.MONGO_URI[app.settings.env]);
