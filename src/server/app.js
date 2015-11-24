@@ -9,18 +9,13 @@ var express = require('express'),
     path = require('path'),
     passport = require('passport'),
     session = require('express-session'),
-    localStrategy = require('passport-local' ).Strategy;
+    localStrategy = require('passport-local').Strategy;
 
-// mongoose
 mongoose.connect('mongodb://localhost/capstone');
 
-// user schema/model
 var User = require('./models/user.js');
-
-// create instance of express
 var app = express();
 
-// require routes
 var routes = require('./routes/index.js');
 
 // define middleware
@@ -36,7 +31,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 // app.use(passport.session());
-app.use(session.session());
+app.use(passport.session());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // configure passport
