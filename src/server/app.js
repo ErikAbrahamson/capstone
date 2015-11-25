@@ -1,4 +1,3 @@
-// dependencies
 var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
@@ -13,13 +12,14 @@ var express = require('express'),
     localStrategy = require('passport-local').Strategy;
     require('dotenv').load();
 
-mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
+// mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
 
 var User = require('./models/user.js');
 var app = express();
 
 var auth = require('./routes/auth.js');
 var users = require('./routes/users.js');
+var tasks = require('./routes/tasks.js');
 
 // define middleware
 app.use(express.static(path.join(__dirname, '../client')));

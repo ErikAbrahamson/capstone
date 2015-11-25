@@ -3,10 +3,6 @@ var express = require('express'),
     passport = require('passport'),
     User = require('../models/user.js');
 
-// router.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname, '../../client', 'index.html'));
-// });
-
 router.post('/register', function(req, res) {
   User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
     if (err) {
