@@ -23,10 +23,10 @@ This will be a task management app utilizing negative reinforcement in order to 
 
 ## MVP
 
-The MVP will be a visually clean and testable React CRUD application with fully functional API integration. Users will be able to manage their tasks and successfully route payments to a service of their choosing.
+The MVP will be a visually clean and testable MEAN stack application with fully functional API integration. Users will be able to manage their tasks and successfully route payments to a service of their choosing.
 
 ## Additional features
 
 - Responsive design
 - Email notifications
-- (Possibly) React Native for a mobile application
+- (Possibly) Angular Native for a mobile application
