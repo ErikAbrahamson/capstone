@@ -43,6 +43,7 @@ passport.deserializeUser(User.deserializeUser());
 // routes
 app.use('/user/', auth);
 app.use('/', users);
+app.use('/', tasks);
 
 // serve client-side Angular
 app.get('/', function(req, res) {
