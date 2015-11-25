@@ -12,7 +12,7 @@ var express = require('express'),
     localStrategy = require('passport-local').Strategy;
     require('dotenv').load();
 
-// mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
+mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
 
 var User = require('./models/user.js');
 var app = express();

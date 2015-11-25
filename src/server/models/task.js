@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var Task = new Schema({
-  // _creator : { type: Number, ref: 'Person' },
   title: { type: String },
   description: { type: String },
   deadline: { type: Date },

@@ -43,4 +43,5 @@ router.delete('/user/:id', function(req, res, next) {
       res.json(error);
     }).done();
 });
+
 module.exports = router;
