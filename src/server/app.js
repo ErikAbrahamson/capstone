@@ -18,7 +18,8 @@ mongoose.connect(config.MONGO_URI[process.env.NODE_ENV]);
 var User = require('./models/user.js');
 var app = express();
 
-var routes = require('./routes/index.js');
+var auth = require('./routes/auth.js');
+var users = require('./routes/users.js');
 
 // define middleware
 app.use(express.static(path.join(__dirname, '../client')));
@@ -40,8 +41,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // routes
-app.use('/user/', routes);
+app.use('/user/', auth);
+app.use('/', users);
 
+// serve client-side Angular
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
