@@ -9,3 +9,10 @@ before_script:
 - npm install -g mocha
 script: istanbul cover _mocha -- --recursive -R spec
 after_script: npm run send-coverage
+deploy:
+  provider: heroku
+  api_key:
+    secure: pQb7NyGFgKUe9NZvEYfwn4zl+SNEHIPRgbrNZSUF3zNe+lDpZIXnruUbLOWiT/X12Fn6rdmnpdEZR3Mt9A7F1yB7aJqwvI0YzQZh1kRjPveNySGSO1jT/fNnM/LP1u83PG2ECX6BOnQMrnTIrRokCf/uPOMENHDzR7Lxehj8BV9pL6g0T/ybtiwzuUau+ccw58mO0H96Yu4YyuIceG48LcYks8ejyCkYFcxqeN2WX9UE3Kw3tJjkmKhXflYYBecHtYOjC3yiGR4O06jYMKB+bcoOPNWmAFlmxcpJ/7cGc+BaCI0C2ocL9mTPrmmS3/deIiWTTm4e60Muu+B7zW9P+DbRLjnVbYqYQntZFDbcGt5ogOH2NDsNC+pgivrSDkH9hC/lP7WhOcF3bjsmCNXo/RMwp8Dfsz7VqpmvObgm2KzoYfDS/dA6pQvOamngwarrD8oJ/90xXDZPO07mh+fjSt1I9sbf6gLQ7bgeasBXu8hGSGllRwowq/sai0LxOknJNCxDU8FH4nYn3WmBWURtBM9fcdmRZUAXqQDgjss0SD7m/zO18TJvp5AwvYdVH9EuhpYd07FeFgojL5hevyAogYWrMG8BSumjtM94sLbeG7c3qVVqpTRBwUmfsGw1RPrxiq5UN94bYrhZRj9eMaPYGdz6JU0LfAdjmelWexURto0=
+  app: capstone-g11
+  on:
+    repo: ErikAbrahamson/capstone
