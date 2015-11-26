@@ -29,4 +29,4 @@ The MVP will be a visually clean and testable MEAN stack application with fully 
 
 - Responsive design
 - Email notifications
-- (Possibly) Angular Native for a mobile application
+- (Possibly) React Native for a mobile application
