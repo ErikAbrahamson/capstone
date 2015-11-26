@@ -6,7 +6,7 @@ var express = require('express'),
     mongoose = require('mongoose-q')(require('mongoose'), { spread: true });
 
 router.get('/user/:id/tasks', function(req, res, next){
- User.findById(req.params.id)
+ User.findById(req.params.id).lean()
   .populate('tasks')
   .exec(function(error, user) {
     console.log(user);
