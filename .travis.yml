@@ -5,8 +5,7 @@ node_js:
 - '4.0'
 - '0.12'
 - '0.11'
-services:
-  - mongodb
+services: mongodb
 before_script:
 - npm install -g mocha
 script: istanbul cover _mocha -- --recursive -R spec

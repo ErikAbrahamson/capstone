@@ -18,8 +18,10 @@ router.get('/user/:id/tasks', function(req, res, next){
 router.post('/user/:id/task', function(req, res, next) {
     var newTask = new Task(req.body);
     newTask.save();
-    var update = { $push : {tasks : newTask }}, options = { new: true },
-      id = req.params.id;
+    var update = { $push : {tasks : newTask }}, options = {
+       new: true,
+       upsert : true
+    }, id = req.params.id;
 
     User.findByIdAndUpdateQ(id, update, options)
       .then(function(result) { res.json(result); })
