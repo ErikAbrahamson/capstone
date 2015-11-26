@@ -4,7 +4,7 @@ var express = require('express'),
     User = require('../models/user.js'),
     mongoose = require('mongoose-q')(require('mongoose'), { spread: true });
 
-router.get('/user', function(req, res, next) {
+router.get('/users', function(req, res, next) {
   User.findQ().then(function(result) {
       res.json(result);
     }).catch(function(error) {

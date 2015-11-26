@@ -5,39 +5,45 @@ var express = require('express'),
     Task = require('../models/task.js'),
     mongoose = require('mongoose-q')(require('mongoose'), { spread: true });
 
+router.get('/user/:id/tasks', function(req, res, next){
+ User.findById(req.params.id)
+  .populate('tasks')
+  .exec(function(error, user) {
+    console.log(user);
+    if (error) res.json(error);
+    else res.json(user.tasks);
+  });
+});
+
 router.post('/user/:id/task', function(req, res, next) {
     var newTask = new Task(req.body);
     newTask.saveQ();
-    var update = { $push : {tasks : newTask }};
-    var options = { new:true };
-    var id = req.params.id;
+    var update = { $push : {tasks : newTask }}, options = { new: true },
+            id = req.params.id;
 
     User.findByIdAndUpdateQ(id, update, options)
-    .then(function(result) {
-        res.json(result);
-    })
-    .catch(function(err) {
-        res.send(err);
-    });
+      .then(function(result) { res.json(result); })
+      .catch(function(error) { res.send(error); });
 });
 
-router.post('/task', function(req, res, next) {
-    var newTask = new Task(req.body);
-    newTask.saveQ()
+router.put('/user/task/:id', function(req, res, next) {
+  var query = { '_id': req.params.id }, options = { new: true };
+  Task.findOneAndUpdateQ(query, req.body, options)
     .then(function(result) {
-        res.json(result);
-    })
-    .catch(function(err) {
-        res.send(err);
-    });
-});
-
-router.get('/user/task', function(req, res, next) {
-  task.findQ().then(function(result) {
       res.json(result);
-    }).catch(function(error) {
+    })
+    .catch(function(error) {
       res.send(error);
     }).done();
 });
 
+router.delete('/user/task/:id', function(req, res, next) {
+  Task.findByIdAndRemoveQ(req.params.id)
+    .then(function(result) {
+      res.json(result);
+    })
+    .catch(function(error) {
+      res.json(error);
+    }).done();
+});
 module.exports = router;
