@@ -26,24 +26,4 @@ router.post('/user/:id/task', function(req, res, next) {
       .catch(function(error) { res.send(error); });
 });
 
-router.put('/user/task/:id', function(req, res, next) {
-  var query = { '_id': req.params.id }, options = { new: true };
-  Task.findOneAndUpdateQ(query, req.body, options)
-    .then(function(result) {
-      res.json(result);
-    })
-    .catch(function(error) {
-      res.send(error);
-    }).done();
-});
-
-router.delete('/user/task/:id', function(req, res, next) {
-  Task.findByIdAndRemoveQ(req.params.id)
-    .then(function(result) {
-      res.json(result);
-    })
-    .catch(function(error) {
-      res.json(error);
-    }).done();
-});
 module.exports = router;
