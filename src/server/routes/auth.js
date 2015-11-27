@@ -4,10 +4,8 @@ var express = require('express'),
     User = require('../models/user.js');
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
-    if (err) {
-      return res.status(500).json({err: err});
-    }
+  User.register(new User({ username: req.body.username }), req.body.password, function(error, account) {
+    if (error) return res.status(500).json({ error: error });
     passport.authenticate('local')(req, res, function () {
       return res.status(200).json({ status: 'Registration successful!'});
     });
@@ -15,16 +13,12 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
-    if (err) {
-      return res.status(500).json({err: err});
-    }
-    if (!user) {
-      return res.status(401).json({err: info});
-    }
-    req.logIn(user, function(err) {
-      if (err) {
-        return res.status(500).json({err: 'Could not log in user'});
+  passport.authenticate('local', function(error, user, info) {
+    if (error) return res.status(500).json({ error: error });
+    if (!user) return res.status(401).json({ error: info });
+    req.logIn(user, function(error) {
+      if (error) {
+        return res.status(500).json({error: 'Could not log in user'});
       }
       res.status(200).json({status: 'Login successful!'});
     });
