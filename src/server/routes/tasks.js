@@ -5,19 +5,18 @@ var express = require('express'),
     Task = require('../models/task.js'),
     mongoose = require('mongoose-q')(require('mongoose'), { spread: true });
 
-router.get('/user/:id/tasks', function(req, res, next){
- User.findById(req.params.id).lean()
-  .populate('tasks')
-  .exec(function(error, user) {
-    console.log(user);
+router.get('/user/:id/tasks', function(req, res, next) {
+  User.findById(req.params.id)
+    .populate('tasks')
+    .exec(function(error, user) {
     if (error) res.json(error);
     else res.json(user.tasks);
   });
 });
 
 router.post('/user/:id/task', function(req, res, next) {
-    var newTask = new Task(req.body);
-    newTask.save();
+  var newTask = new Task(req.body);
+    newTask.saveQ();
     var update = { $push : {tasks : newTask }}, options = {
        new: true,
        upsert : true
