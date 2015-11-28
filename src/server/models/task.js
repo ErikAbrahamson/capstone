@@ -6,7 +6,6 @@ var Task = new Schema({
   title: { type: String },
   description: { type: String },
   deadline: { type: Date },
-  twitter: { type: String },
   priority: { type: Number },
   complete: { type: String },
   severity: { type: Number },
