@@ -12,11 +12,12 @@ chai.use(chaiHttp);
 
 describe('Userbase', function() {
 
-  Task.collection.drop();
-  var date = new Date();
-  date.setDate(date.getDate() + 10);
-
   beforeEach(function(done) {
+
+    Task.collection.drop();
+    User.collection.drop();
+    var date = new Date();
+    date.setDate(date.getDate() + 10);
 
     var newTask = new Task({
       title: 'Finish Tests',
