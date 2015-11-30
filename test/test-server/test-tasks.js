@@ -30,6 +30,7 @@ describe('User Tasks', function() {
         twitter_post: false
       }
     });
+    newTask.save();
     var secondTask = new Task({
       title: 'Seriously, finish tests',
       description: 'I\'d better finish these damn tests',
@@ -42,6 +43,7 @@ describe('User Tasks', function() {
         twitter_post: true
       }
     });
+    secondTask.save();
     var newUser = new User({
       username: 'test@test.com',
       password: 'test',
@@ -50,11 +52,8 @@ describe('User Tasks', function() {
       tasks:[newTask, secondTask]
     });
 
-    newTask.save();
-    secondTask.save();
     newUser.save();
     done();
-
   });
 
   afterEach(function(done) {
@@ -71,7 +70,6 @@ describe('User Tasks', function() {
         chai.request(server)
           .get('/user/' + res.body[0]._id + '/tasks/')
           .end(function(error, res) {
-            this.timeout(20);
             res.should.have.status(200);
             res.body[0].should.be.a('object');
             res.body[0].should.have.property('_id');
