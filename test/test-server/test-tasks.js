@@ -64,6 +64,7 @@ describe('User Tasks', function() {
   });
 
   it('Should return all tasks for a user', function(done) {
+    this.timeout(0);
     var date = new Date();
     date = date.setDate(15);
     chai.request(server).get('/users/')
@@ -104,6 +105,7 @@ describe('User Tasks', function() {
   });
 
   it('Should return a single task from a user', function(done) {
+    this.timeout(0);
     chai.request(server)
       .get('/users/').end(function(error, res) {
         chai.request(server)
@@ -129,6 +131,7 @@ describe('User Tasks', function() {
   });
 
   it('Should post a new task into the user\'s task list', function(done) {
+    this.timeout(0);
     var date = new Date();
     chai.request(server)
       .get('/users/').end(function(error, res) {
@@ -155,6 +158,7 @@ describe('User Tasks', function() {
   });
 
   it('Should allow a user to edit tasks', function(done) {
+    this.timeout(0);
     chai.request(server)
       .get('/users/').end(function(err, res) {
         chai.request(server)
@@ -174,6 +178,7 @@ describe('User Tasks', function() {
   });
 
   it('Should allow a user to remove a task', function(done) {
+    this.timeout(0);
     chai.request(server)
       .get('/users').end(function(err, res) {
         chai.request(server)
