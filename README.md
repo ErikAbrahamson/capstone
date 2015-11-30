@@ -1,5 +1,5 @@
 # Name: TBD  
-[![Build Status](https://travis-ci.org/ErikAbrahamson/capstone.svg?branch=master)](https://travis-ci.org/ErikAbrahamson/capstone)
+[![Build Status](https://travis-ci.org/ErikAbrahamson/capstone.svg?branch=master)](https://travis-ci.org/ErikAbrahamson/capstone) [![Coverage Status](https://coveralls.io/repos/ErikAbrahamson/capstone/badge.svg?branch=master&service=github)](https://coveralls.io/github/ErikAbrahamson/capstone?branch=master)
 
 ## Summary
 
