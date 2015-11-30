@@ -16,14 +16,13 @@ router.get('/user/:id/tasks', function(req, res, next) {
 router.post('/user/:id/task', function(req, res, next) {
   var newTask = new Task(req.body);
     newTask.saveQ();
-    var update = { $push : {tasks : newTask }}, options = {
-       new: true,
-       upsert : true
-    }, id = req.params.id;
-
-    User.findByIdAndUpdateQ(id, update, options)
-      .then(function(result) { res.json(result); })
-      .catch(function(error) { res.send(error); });
+  var update = { $push : {tasks : newTask }}, options = {
+    new: true,
+    upsert : true
+  }, id = req.params.id;
+  User.findByIdAndUpdateQ(id, update, options)
+    .then(function(result) { res.json(result); })
+    .catch(function(error) { res.send(error); });
 });
 
 router.get('/user/:userid/task/:taskid', function(req, res, next) {
@@ -31,10 +30,8 @@ router.get('/user/:userid/task/:taskid', function(req, res, next) {
   User.findByIdQ(user)
     .then(function(result) {
       Task.findByIdQ(task)
-        .then(function(result) {
-          res.json(result);
-        });
-      })
+        .then(function(result) { res.json(result); });
+    })
     .catch(function(error) {
       res.send(error);
     }).done();
@@ -46,10 +43,8 @@ router.put('/user/:userid/task/:taskid', function(req, res, next) {
   User.findByIdQ(user)
     .then(function(result) {
       Task.findOneAndUpdateQ(task, req.body, options)
-        .then(function(result) {
-          res.json({ 'Updated:': result});
-        });
-      })
+        .then(function(result) { res.json({ 'Updated:': result}); });
+    })
     .catch(function(error) {
       res.send(error);
     }).done();
@@ -60,10 +55,8 @@ router.delete('/user/:userid/task/:taskid', function(req, res, next) {
   User.findByIdQ(user)
     .then(function(result) {
       Task.findByIdAndRemoveQ(task)
-        .then(function(result) {
-          res.json({ 'Deleted:': result });
-        });
-      })
+        .then(function(result) { res.json({ 'Deleted:': result }); });
+    })
     .catch(function(error) {
       res.send(error);
     }).done();
