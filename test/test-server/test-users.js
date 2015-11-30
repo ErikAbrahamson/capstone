@@ -71,7 +71,6 @@ describe('Userbase', function() {
     done();
   });
 
-  // GET ALL users
   it('Should return all users and associated tasks', function(done) {
     chai.request(server)
       .get('/users/')
@@ -124,9 +123,41 @@ describe('Userbase', function() {
       });
   });
 
+  it('Should let an authenticated user be able to log in', function(done) {
+    chai.request(server).post('/user/register').send({
+        'username': 'Erik',
+        'password': '12345',
+        'phone': '123-456-7890',
+        'twitter': '@user'
+      })
+      .end(function(err, res) {
+        chai.request(server).post('/user/login/').send({
+          'username': 'Erik',
+          'password': '12345'
+        })
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.status.should.equal('Login successful!');
+          done();
+        });
+      });
+  });
+
+  it('Should let an authenticated user log out', function(done) {
+    chai.request(server).get('/user/logout/')
+      .send({
+        'username': 'Rick',
+        'password': '12345'
+      })
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.body.status.should.equal('Bye!');
+        done();
+      });
+  });
+
   it('Should allow a user to modify their information', function(done) {
-    chai.request(server)
-      .get('/users/')
+    chai.request(server).get('/users/')
       .end(function(err, response) {
         chai.request(server)
           .put('/user/' + response.body[0]._id)
