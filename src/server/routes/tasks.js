@@ -7,8 +7,7 @@ var express = require('express'),
 
 router.get('/user/:id/tasks', function(req, res, next) {
   User.findById(req.params.id)
-    .populate('tasks')
-    .exec(function(error, user) {
+    .populate('tasks').exec(function(error, user) {
     if (error) res.json(error);
     else res.json(user.tasks);
   });
@@ -33,11 +32,41 @@ router.get('/user/:userid/task/:taskid', function(req, res, next) {
     .then(function(result) {
       Task.findByIdQ(task)
         .then(function(result) {
-        res.json(result);
-      });
-    })
+          res.json(result);
+        });
+      })
     .catch(function(error) {
       res.send(error);
     }).done();
 });
+
+router.put('/user/:userid/task/:taskid', function(req, res, next) {
+  var user = req.params.userid, task = req.params.taskid,
+    options = { new: true };
+  User.findByIdQ(user)
+    .then(function(result) {
+      Task.findOneAndUpdateQ(task, req.body, options)
+        .then(function(result) {
+          res.json({ 'Updated:': result});
+        });
+      })
+    .catch(function(error) {
+      res.send(error);
+    }).done();
+});
+
+router.delete('/user/:userid/task/:taskid', function(req, res, next) {
+  var user = req.params.userid, task = req.params.taskid;
+  User.findByIdQ(user)
+    .then(function(result) {
+      Task.findByIdAndRemoveQ(task)
+        .then(function(result) {
+          res.json({ 'Deleted:': result });
+        });
+      })
+    .catch(function(error) {
+      res.send(error);
+    }).done();
+});
+
 module.exports = router;
