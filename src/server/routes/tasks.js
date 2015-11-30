@@ -27,4 +27,17 @@ router.post('/user/:id/task', function(req, res, next) {
       .catch(function(error) { res.send(error); });
 });
 
+router.get('/user/:userid/task/:taskid', function(req, res, next) {
+  var user = req.params.userid, task = req.params.taskid;
+  User.findByIdQ(user)
+    .then(function(result) {
+      Task.findByIdQ(task)
+        .then(function(result) {
+        res.json(result);
+      });
+    })
+    .catch(function(error) {
+      res.send(error);
+    }).done();
+});
 module.exports = router;
