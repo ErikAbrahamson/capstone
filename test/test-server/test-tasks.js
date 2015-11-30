@@ -127,6 +127,7 @@ describe('User Tasks', function() {
           });
       });
   });
+
   it('Should post a new task into the user\'s task list', function(done) {
     var date = new Date();
     chai.request(server)
