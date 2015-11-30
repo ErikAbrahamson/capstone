@@ -123,7 +123,7 @@ describe('Userbase', function() {
       });
   });
 
-  it('Should let an authenticated user be able to log in', function(done) {
+  it('Should let an authenticated user log in', function(done) {
     chai.request(server).post('/user/register').send({
         'username': 'Erik',
         'password': '12345',
@@ -156,7 +156,7 @@ describe('Userbase', function() {
       });
   });
 
-  it('Should allow a user to modify their information', function(done) {
+  it('Should allow a user to modify their account information', function(done) {
     chai.request(server).get('/users/')
       .end(function(err, response) {
         chai.request(server)
