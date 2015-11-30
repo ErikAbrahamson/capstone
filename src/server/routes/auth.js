@@ -4,10 +4,14 @@ var express = require('express'),
     User = require('../models/user.js');
 
 router.post('/register', function(req, res) {
-  User.register(new User({ username: req.body.username }), req.body.password, function(error, account) {
+  User.register(new User({
+    username: req.body.username,
+    phone: req.body.phone,
+    twitter: req.body.twitter,
+  }), req.body.password, function(error, account) {
     if (error) return res.status(500).json({ error: error });
     passport.authenticate('local')(req, res, function () {
-      return res.status(200).json({ status: 'Registration successful!'});
+      return res.status(200).json(account);
     });
   });
 });

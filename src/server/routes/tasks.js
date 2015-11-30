@@ -43,7 +43,7 @@ router.put('/user/:userid/task/:taskid', function(req, res, next) {
   User.findByIdQ(user)
     .then(function(result) {
       Task.findOneAndUpdateQ(task, req.body, options)
-        .then(function(result) { res.json({ 'Updated:': result}); });
+        .then(function(result) { res.json(result); });
     })
     .catch(function(error) {
       res.send(error);
@@ -55,7 +55,7 @@ router.delete('/user/:userid/task/:taskid', function(req, res, next) {
   User.findByIdQ(user)
     .then(function(result) {
       Task.findByIdAndRemoveQ(task)
-        .then(function(result) { res.json({ 'Deleted:': result }); });
+        .then(function(result) { res.json(result); });
     })
     .catch(function(error) {
       res.send(error);
