@@ -69,8 +69,9 @@ describe('User Tasks', function() {
     chai.request(server).get('/users/')
       .end(function(err, res) {
         chai.request(server)
-          .get('/user/' + res.body[0]._id + '/tasks')
+          .get('/user/' + res.body[0]._id + '/tasks/')
           .end(function(error, res) {
+            this.timeout(20);
             res.should.have.status(200);
             res.body[0].should.be.a('object');
             res.body[0].should.have.property('_id');
