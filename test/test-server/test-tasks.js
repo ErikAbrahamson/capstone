@@ -13,6 +13,7 @@ chai.use(chaiHttp);
 describe('User Tasks', function() {
 
   Task.collection.drop();
+  User.collection.drop();
   var date = new Date();
   date = date.setDate(15);
 
