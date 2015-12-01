@@ -62,8 +62,9 @@ describe('User Tasks', function() {
 
     User.findByIdAndUpdateQ(userID, pushTasks, isNew)
       .then(function(result) { done(); })
-      .catch(function(error) { console.log(error); });
+      .catch(function(error) { done(); });
   });
+
 
   afterEach(function(done) {
     User.collection.drop();
