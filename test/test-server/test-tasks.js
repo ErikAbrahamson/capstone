@@ -17,8 +17,6 @@ describe('User Tasks', function() {
 
     Task.collection.drop();
     User.collection.drop();
-    var date = new Date();
-    date = date.setDate(15);
 
     var newUser = new User({
       username: 'test@test.com',
@@ -172,7 +170,7 @@ describe('User Tasks', function() {
                 done();
               });
           });
-      });
+        });
   });
 
   it('Should post a new task into the user\'s task list', function(done) {
@@ -267,7 +265,7 @@ describe('User Tasks', function() {
 
         User.findByIdAndUpdateQ(userID, pushTasks, isNew)
           .then(function(result) { done(); })
-          .catch(function(error) { done(); });
+          .catch(function(error) {});
 
         chai.request(server)
           .delete('/user/' + res.body[0]._id + '/task/' + res.body[0].tasks[0])
