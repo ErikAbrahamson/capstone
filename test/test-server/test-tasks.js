@@ -51,10 +51,18 @@ describe('User Tasks', function() {
       password: 'test',
       phone: '123-456-7890',
       twitter: '@user',
-      tasks:[newTask, secondTask]
+      tasks:[]
     });
-    
+
     newUser.save();
+
+    // Workaround for async issues
+    var userID = newUser._id, isNew = { new:true },
+      pushTasks = { $pushAll : {tasks : [newTask, secondTask] }};
+
+    User.findByIdAndUpdateQ(userID, pushTasks, isNew)
+      .then(function(result) { console.log(result); })
+      .catch(function(error) { console.log(error); });
     done();
   });
 
