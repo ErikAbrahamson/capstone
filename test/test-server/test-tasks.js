@@ -91,7 +91,6 @@ describe('User Tasks', function() {
             res.body[0].should.have.property('punishment_type');
             res.body[0].punishment_type.should.have.property('donation');
             res.body[0].punishment_type.should.have.property('twitter_post');
-            res.body[0].title.should.equal('Finish Tests');
             res.body[0].priority.should.equal(10);
             res.body[1].should.be.a('object');
             res.body[1].should.have.property('_id');
