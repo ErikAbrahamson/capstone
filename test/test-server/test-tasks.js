@@ -57,13 +57,12 @@ describe('User Tasks', function() {
     newUser.save();
 
     // Workaround for async issues
-    // var userID = newUser._id, isNew = { new:true },
-    //   pushTasks = { $pushAll : {tasks : [newTask, secondTask] }};
-    //
-    // User.findByIdAndUpdateQ(userID, pushTasks, isNew)
-    //   .then(function(result) { console.log(result.tasks); })
-    //   .catch(function(error) { console.log(error); });
-    done();
+    var userID = newUser._id, isNew = { new:true },
+      pushTasks = { $pushAll : {tasks : [newTask, secondTask] }};
+
+    User.findByIdAndUpdateQ(userID, pushTasks, isNew)
+      .then(function(result) { done(); })
+      .catch(function(error) { console.log(error); });
   });
 
   afterEach(function(done) {
