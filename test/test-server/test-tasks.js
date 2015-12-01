@@ -61,7 +61,7 @@ describe('User Tasks', function() {
       pushTasks = { $pushAll : {tasks : [newTask, secondTask] }};
 
     User.findByIdAndUpdateQ(userID, pushTasks, isNew)
-      .then(function(result) { console.log(result); })
+      .then(function(result) { console.log('Pushing Tasks...'); })
       .catch(function(error) { console.log(error); });
     done();
   });
