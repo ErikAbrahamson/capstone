@@ -8,7 +8,7 @@ node_js:
 services: mongodb
 before_script:
 - npm install -g mocha
-script: istanbul cover _mocha -- --recursive -R spec
+script: istanbul cover _mocha -- --recursivemocha --timeout 15000 -R spec
 after_script: npm run send-coverage
 deploy:
   provider: heroku
