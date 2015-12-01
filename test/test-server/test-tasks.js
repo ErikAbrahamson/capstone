@@ -4,6 +4,7 @@ var mocha = require('mocha');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../../src/server/app.js');
+var mongoose = require('mongoose-q')(require('mongoose'));
 var Task = require('../../src/server/models/task.js');
 var User = require('../../src/server/models/user.js');
 
@@ -52,7 +53,7 @@ describe('User Tasks', function() {
       twitter: '@user',
       tasks:[newTask, secondTask]
     });
-
+    
     newUser.save();
     done();
   });
