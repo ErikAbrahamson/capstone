@@ -1,9 +1,10 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial']);
 
 myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'partials/home.html'
+      templateUrl: 'partials/home.html',
+      access: {restricted: false}
     })
     .when('/login', {
       templateUrl: 'partials/login.html',
@@ -35,7 +36,7 @@ myApp.config(function ($routeProvider, $locationProvider) {
 
 myApp.run(function ($rootScope, $location, $route, AuthService) {
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
-    if (next.access.restricted && AuthService.isLoggedIn() === false) {
+    if (next.access.restricted && !AuthService.getUserStatus()) {
       $location.path('/login');
       $route.reload();
     }

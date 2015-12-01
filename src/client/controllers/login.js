@@ -1,8 +1,6 @@
 angular.module('myApp').controller('loginController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
-
-    console.log(AuthService.getUserStatus());
+  ['$scope', '$rootScope', '$location', 'AuthService',
+  function ($scope, $rootScope, $location, AuthService) {
 
     $scope.login = function () {
 
@@ -14,6 +12,7 @@ angular.module('myApp').controller('loginController',
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         // handle success
         .then(function () {
+          console.log(AuthService.getUserStatus());
           $location.path('/');
           $scope.disabled = false;
           $scope.loginForm = {};
@@ -25,7 +24,6 @@ angular.module('myApp').controller('loginController',
           $scope.disabled = false;
           $scope.loginForm = {};
         });
-
     };
 
 }]);

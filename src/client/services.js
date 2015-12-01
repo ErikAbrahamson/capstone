@@ -1,6 +1,9 @@
 angular.module('myApp').factory('AuthService',
   ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
 
+    // create user variable
+    var user = false;
+
     function isLoggedIn() {
       if (user) return true;
       else return false;
@@ -11,13 +14,14 @@ angular.module('myApp').factory('AuthService',
     }
 
     function login(username, password) {
+      // console.log(username);
       var deferred = $q.defer();
 
       $http.post('/user/login', { username: username, password: password  })
 
         .success(function (data, status) {
-          if (status === 200 && data.status) {
-            user = true;
+          if (status === 200) {
+            user = data;
             deferred.resolve();
           } else {
             user = false;
@@ -76,8 +80,10 @@ angular.module('myApp').factory('AuthService',
 
     }
 
-    // create user variable
-    var user = null;
+    // $scope.$watch(AuthService.isLoggedIn, function(isLoggedIn) {
+    //   $scope.isLoggedIn = isLoggedIn;
+    //   $scope.currentUser = AuthService.currentUser();
+    // });
 
     // return available functions for use in controllers
     return ({

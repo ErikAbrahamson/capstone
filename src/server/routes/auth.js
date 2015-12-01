@@ -24,7 +24,10 @@ router.post('/login', function(req, res, next) {
       if (error) {
         return res.status(500).json({error: 'Could not log in user'});
       }
-      res.status(200).json({status: 'Login successful!'});
+      res.status(200).json({
+        username:user.username,
+        userId:user._id
+      });
     });
   })(req, res, next);
 });

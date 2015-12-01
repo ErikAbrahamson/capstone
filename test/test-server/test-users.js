@@ -138,7 +138,7 @@ describe('Userbase', function() {
         })
         .end(function(err, res) {
           res.should.have.status(200);
-          res.body.status.should.equal('Login successful!');
+          res.body.username.should.equal('Erik');
           done();
         });
       });
