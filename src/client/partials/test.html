@@ -1,0 +1,60 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak>
+
+  <form ng-controller="registerController" name="registerForm" ng-submit="register()">
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Register</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <md-input-container>
+        <label>User Name</label>
+        <input type="text" name="username" ng-model="registerForm.username" required>
+        <div ng-messages="registerForm.username.$error" ng-show="registerForm.username.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" name="password" ng-model="registerForm.password" required md-minlength="6">
+        <div ng-messages="registerForm.password.$error" ng-show="registerForm.password.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-minlength">That's too short!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" name="email" ng-model="registerForm.email" required>
+        <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Phone Number</label>
+        <input type="tel" name="phone" ng-model="registerForm.phone" required>
+        <div ng-messages="registerForm.phone.$error" ng-show="registerForm.phone.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Not Useful
+      </md-button>
+      <md-button ng-click="cancel()" style="margin-right:20px;">
+        Useful
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

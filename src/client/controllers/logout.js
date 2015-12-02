@@ -1,17 +1,17 @@
-angular.module('myApp').controller('logoutController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
+(function() {
+  'use strict';
 
-    $scope.logout = function () {
+  angular.module('myApp').controller('logoutController',
+    ['$scope', '$location', 'AuthService',
+    function ($scope, $location, AuthService) {
 
-      console.log(AuthService.getUserStatus());
+      $scope.logout = function () {
 
-      // call logout from service
-      AuthService.logout()
-        .then(function () {
-          $location.path('/login');
-        });
+        AuthService.logout()
 
-    };
-
-}]);
+          .then(function () {
+            $location.path('/login');
+          });
+      };
+    }]);
+}());

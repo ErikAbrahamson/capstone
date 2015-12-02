@@ -1,17 +1,72 @@
-<div class="col-md-4">
-  <h1>Register</h2>
-  <div ng-show="error" class="alert alert-danger"></div>
-  <form class="form" ng-submit="register()">
-    <div class="form-group">
-      <label>username</label>
-      <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-        <input type="password" class="form-control" name="password" ng-model="registerForm.password" required>
+<div ng-controller="registerController" layout="column" ng-cloak>
+  <md-content layout-padding>
+    <form name="registerForm">
+
+      <md-input-container>
+        <label>User Name</label>
+        <input type="text" name="username" ng-model="registerForm.username" required>
+        <div ng-messages="registerForm.username.$error" ng-show="registerForm.username.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" name="password" ng-model="registerForm.password" required md-minlength="6">
+        <div ng-messages="registerForm.password.$error" ng-show="registerForm.password.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-minlength">That's too short!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Email</label>
+        <input type="email" name="email" ng-model="registerForm.email" required>
+        <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Phone Number</label>
+        <input type="tel" name="phone" ng-model="registerForm.phone" required>
+        <div ng-messages="registerForm.phone.$error" ng-show="registerForm.phone.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-button ng-submit="register()" type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>
+
+    </form>
+  </md-content>
+</div>
+<div ng-controller="DialogController" class="md-padding" id="popupContainer" ng-cloak>
+  <p class="inset">
+    Open a dialog over the app's content. Press escape or click outside to close the dialog and
+    send focus back to the triggering button.
+  </p>
+  <div class="dialog-demo-content" layout="row" layout-wrap layout-margin>
+    <md-button class="md-primary md-raised" ng-click="showAlert($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+      Alert Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="showConfirm($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+      Confirm Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+      Custom Dialog
+    </md-button>
+    <div hide-gt-sm layout="row" layout-align="center center" flex>
+        <md-checkbox ng-model="customFullscreen" aria-label="Fullscreen Custom Dialog">Custom Dialog Fullscreen</md-checkbox>
       </div>
-      <div>
-        <button type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>
-      </div>
-  </form>
+    <md-button class="md-primary md-raised" ng-click="showTabDialog($event)" flex-sm="100" flex-md="100" flex-gt-md="auto">
+      Tab Dialog
+    </md-button>
+  </div>
+  <p class="footer">Note: The <b>Confirm</b> dialog does not use <code>$mdDialog.clickOutsideToClose(true)</code>.</p>
+  <div ng-if="status">
+    <br/>
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
 </div>

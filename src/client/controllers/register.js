@@ -1,24 +1,29 @@
-angular.module('myApp').controller('registerController',
-  ['$scope', '$location', 'AuthService', function ($scope, $location, AuthService) {
+(function() {
+  'use strict';
 
-    $scope.register = function () {
+  angular.module('myApp').controller('registerController',
+    ['$scope', '$location', 'AuthService',
+    function ($scope, $location, AuthService) {
 
-      $scope.error = false;
-      $scope.disabled = true;
+      $scope.register = function () {
 
-      AuthService.register($scope.registerForm.username, $scope.registerForm.password)
+        $scope.error = false;
+        $scope.disabled = true;
 
-        .then(function () {
-          $location.path('/login');
-          $scope.disabled = false;
-          $scope.registerForm = {};
-        })
+        AuthService.register($scope.registerForm.username, $scope.registerForm.password)
 
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Something went wrong!";
-          $scope.disabled = false;
-          $scope.registerForm = {};
-        });
-    };
-}]);
+          .then(function () {
+            $location.path('/login');
+            $scope.disabled = false;
+            $scope.registerForm = {};
+          })
+
+          .catch(function () {
+            $scope.error = true;
+            $scope.errorMessage = "Something went wrong!";
+            $scope.disabled = false;
+            $scope.registerForm = {};
+          });
+      };
+  }]);
+}());
