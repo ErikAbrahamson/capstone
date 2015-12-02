@@ -64,17 +64,15 @@
           phone: phone
         })
 
-          .success(function(data, status) {
-            if (status === 200) deferred.resolve();
-            else deferred.reject();
-          })
+        .success(function(data, status) {
+          if (status === 200) deferred.resolve();
+          else deferred.reject();
+        })
 
-          .error(function(data) { deferred.reject(); });
+        .error(function(data) { deferred.reject(); });
 
-        return deferred.promise;
-      };
-
-      // return available functions for use in controllers
-      return Obj;
+      return deferred.promise;
+    };
+    return Obj;
   }]);
 }());

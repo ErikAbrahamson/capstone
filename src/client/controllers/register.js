@@ -6,9 +6,11 @@
     function ($scope, $mdDialog, $mdToast, $location, AuthService) {
 
       $scope.register = function () {
+
         $scope.successToast = function($event) {
           $mdToast.showSimple('Thanks for registering!');
         };
+
         $scope.errorToast = function($event) {
           $mdToast.showSimple('Sorry, this username already exists');
         };

@@ -46,15 +46,15 @@ describe('Userbase', function() {
     var newUser = new User({
       username: 'test@test.com',
       password: 'test',
+      email: 'test@test.com',
       phone: '123-456-7890',
-      twitter: '@user',
       tasks:[newTask, secondTask]
     });
     var anotherUser = new User({
       username: 'Rick',
       password: '12345',
+      email: 'test@test.com',
       phone: '123-456-7890',
-      twitter: '@username',
       tasks: []
     });
 
@@ -81,14 +81,10 @@ describe('Userbase', function() {
         res.body[0].tasks.length.should.equal(2);
         res.body[0].should.have.property('username');
         res.body[0].should.have.property('tasks');
-        res.body[0].should.have.property('twitter');
-        res.body[0].twitter.should.equal('@user');
         res.body[0].should.have.property('_id');
         res.body[0].tasks.length.should.equal(2);
         res.body[1].should.have.property('username');
         res.body[1].should.have.property('tasks');
-        res.body[1].should.have.property('twitter');
-        res.body[1].twitter.should.equal('@username');
         res.body[1].should.have.property('_id');
         res.body[1].tasks.length.should.equal(0);
         done();
@@ -113,11 +109,9 @@ describe('Userbase', function() {
             res.body.should.have.property('password');
             res.body.should.have.property('phone');
             res.body.should.have.property('tasks');
-            res.body.should.have.property('twitter');
             res.body.username.should.equal('test@test.com');
             res.body.password.should.equal('test');
             res.body.phone.should.equal('123-456-7890');
-            res.body.twitter.should.equal('@user');
             res.body.tasks.length.should.equal(0);
             done();
           });
@@ -127,9 +121,7 @@ describe('Userbase', function() {
   it('Should let an authenticated user log in', function(done) {
     chai.request(server).post('/user/register').send({
         'username': 'Erik',
-        'password': '12345',
-        'phone': '123-456-7890',
-        'twitter': '@user'
+        'password': '12345'
       })
       .end(function(err, res) {
         chai.request(server).post('/user/login/').send({
@@ -171,7 +163,7 @@ describe('Userbase', function() {
             res.body.should.have.property('password');
             res.body.should.have.property('phone');
             res.body.should.have.property('tasks');
-            res.body.should.have.property('twitter');
+            res.body.should.have.property('email');
             res.body.username.should.equal('Updated!');
             done();
           });
@@ -183,7 +175,6 @@ describe('Userbase', function() {
         'username': 'Erik',
         'password': '12345',
         'phone': '123-456-7890',
-        'twitter': '@user'
       })
       .end(function(err, res) {
         res.should.have.status(200);
@@ -194,7 +185,6 @@ describe('Userbase', function() {
         res.body.should.have.property('_id');
         res.body.username.should.equal('Erik');
         res.body.phone.should.equal('123-456-7890');
-        res.body.twitter.should.equal('@user');
         done();
       });
   });
@@ -212,7 +202,7 @@ describe('Userbase', function() {
             res.body.should.have.property('password');
             res.body.should.have.property('phone');
             res.body.should.have.property('tasks');
-            res.body.should.have.property('twitter');
+            res.body.should.have.property('email');
             done();
          });
     });

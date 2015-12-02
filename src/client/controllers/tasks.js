@@ -1,14 +1,15 @@
 (function() {
   'use strict';
 
-  angular.module('myApp').controller('loginController',
-    ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService',
-    function ($scope, $mdDialog, $rootScope, $location, TaskService) {
+  angular.module('myApp').controller('taskController',
+    ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService', 'AuthService',
+    function ($scope, $mdDialog, $rootScope, $location, TaskService, AuthService) {
+
       $scope.populateTasks = function () {
 
-        TaskService.getTasks($scope.)
+        // TaskService.getTasks($scope.)
 
-          .then(function () {
+          .then(function() {
             $mdDialog.hide();
             $rootScope.currentUser = $scope.loginForm.username;
             $location.path('/');

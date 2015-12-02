@@ -6,8 +6,8 @@ var express = require('express'),
 router.post('/register', function(req, res) {
   User.register(new User({
     username: req.body.username,
+    email: req.body.email,
     phone: req.body.phone,
-    twitter: req.body.twitter,
   }), req.body.password, function(error, account) {
     if (error) return res.status(500).json({ error: error });
     passport.authenticate('local')(req, res, function () {

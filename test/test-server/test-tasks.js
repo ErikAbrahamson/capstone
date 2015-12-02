@@ -36,8 +36,8 @@ describe('User Tasks', function() {
     var newUser = new User({
       username: 'test@test.com',
       password: 'test',
+      email: 'test@test.com',
       phone: '123-456-7890',
-      twitter: '@user',
       tasks:[newTask]
     });
 

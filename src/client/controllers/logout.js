@@ -6,8 +6,9 @@
     function ($scope, $rootScope, $mdToast, $location, AuthService) {
 
       $scope.logout = function () {
+
         $scope.logoutToast = function($event) {
-          $mdToast.showSimple('Goodbye, ' + $rootScope.currentUser + '!');
+          $mdToast.showSimple('Goodbye, ' + $rootScope.currentUser.username + '!');
         };
 
         $scope.logoutToast();
