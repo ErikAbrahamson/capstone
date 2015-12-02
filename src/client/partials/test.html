@@ -1,60 +1,32 @@
-<md-dialog aria-label="Register" ng-cloak>
-
-  <form ng-controller="registerController" name="registerForm" ng-submit="register()">
-
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>Register</h2>
-        <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-        </md-button>
+<div ng-controller="DemoCtrl" layout="column" ng-cloak>
+  <br/>
+  <md-content layout-padding class="autoScroll">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+      <ng-md-icon icon="person" style="fill: #abcdef"></ng-md-icon>
+      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+      <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+      <input ng-model="user.address" type="text" placeholder="Address" >
+    </md-input-container>
+    <md-input-container class="md-icon-float md-icon-right md-block">
+      <label>Donation Amount</label>
+      <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>
+      <div layout="row">
+        <input ng-model="user.donation" type="number" step="0.01" flex>
+        <md-icon md-svg-src="img/icons/ic_euro_24px.svg" style="position: absolute; top: 4px;"></md-icon>
       </div>
-    </md-toolbar>
-
-    <md-dialog-content>
-      <md-input-container>
-        <label>User Name</label>
-        <input type="text" name="username" ng-model="registerForm.username" required>
-        <div ng-messages="registerForm.username.$error" ng-show="registerForm.username.$dirty">
-          <div ng-message="required">This is required!</div>
-        </div>
-      </md-input-container>
-
-      <md-input-container>
-        <label>Password</label>
-        <input type="password" name="password" ng-model="registerForm.password" required md-minlength="6">
-        <div ng-messages="registerForm.password.$error" ng-show="registerForm.password.$dirty">
-          <div ng-message="required">This is required!</div>
-          <div ng-message="md-minlength">That's too short!</div>
-        </div>
-      </md-input-container>
-
-      <md-input-container>
-        <label>Email</label>
-        <input type="email" name="email" ng-model="registerForm.email" required>
-        <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$dirty">
-          <div ng-message="required">This is required!</div>
-        </div>
-      </md-input-container>
-
-      <md-input-container>
-        <label>Phone Number</label>
-        <input type="tel" name="phone" ng-model="registerForm.phone" required>
-        <div ng-messages="registerForm.phone.$error" ng-show="registerForm.phone.$dirty">
-          <div ng-message="required">This is required!</div>
-        </div>
-      </md-input-container>
-    </md-dialog-content>
-
-    <md-dialog-actions layout="row">
-      <span flex></span>
-      <md-button ng-click="answer('not useful')">
-       Not Useful
-      </md-button>
-      <md-button ng-click="cancel()" style="margin-right:20px;">
-        Useful
-      </md-button>
-    </md-dialog-actions>
-  </form>
-</md-dialog>
+    </md-input-container>
+  </md-content>
+</div>

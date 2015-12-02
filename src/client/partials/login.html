@@ -1,17 +1,39 @@
-<div class="col-md-4">
-  <h1>Login</h2>
-  <div ng-show="error" class="alert alert-danger"></div>
-  <form class="form" ng-submit="login()">
-    <div class="form-group">
-      <label>username</label>
-      <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-        <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
+<md-dialog flex="40" aria-label="Log in" ng-cloak>
+  <form ng-controller="loginController" name="loginForm" ng-submit="login()">
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Log in</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <ng-md-icon icon="close" style="fill: #abcdef"></ng-md-icon>
+        </md-button>
       </div>
-      <div>
-        <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
-      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <md-input-container>
+        <label>User Name</label>
+        <input type="text" name="username" ng-model="loginForm.username" required>
+        <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" name="password" ng-model="loginForm.password" required md-minlength="6">
+        <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-minlength">That's too short!</div>
+        </div>
+      </md-input-container>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">Cancel</md-button>
+      <md-button style="margin-right:20px;" type="submit" ng-click="hide()">Log in</md-button>
+    </md-dialog-actions>
+
   </form>
-</div>
+</md-dialog>

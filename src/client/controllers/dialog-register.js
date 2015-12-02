@@ -1,19 +1,19 @@
 (function() {
   'use strict';
 
-  angular.module('myApp').controller('modalController',
+  angular.module('myApp').controller('dialogRegisterController',
     ['$scope', '$mdDialog', '$mdMedia',
     function ($scope, $mdDialog, $mdMedia) {
 
     $scope.status = '  ';
     $scope.customFullscreen = $mdMedia('sm');
 
-    $scope.showAdvanced = function(event) {
+    $scope.showForm = function(event) {
       $mdDialog.show({
         scope: $scope,
         preserveScope: true,
         controller: DialogController,
-        templateUrl: '../partials/test.html',
+        templateUrl: '../partials/register.html',
         parent: angular.element(document.body),
         targetEvent: event,
         clickOutsideToClose:true,
@@ -31,7 +31,7 @@
       }, function(sm) {
         $scope.customFullscreen = (sm === true);
       });
-      
+
     };
   }]);
 

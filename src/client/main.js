@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages','ngAria']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
 
 myApp.config(function ($routeProvider, $locationProvider) {
   $routeProvider
@@ -20,8 +20,8 @@ myApp.config(function ($routeProvider, $locationProvider) {
       controller: 'registerController',
       access: { restricted: false }
     })
-    .when('/tasks', {
-      template: '<h1>Tasks</h1>',
+    .when('/home', {
+      template: 'partials/home.html',
       access: { restricted: true }
     })
     .when('/two', {
