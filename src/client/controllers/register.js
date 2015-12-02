@@ -6,17 +6,20 @@
     function ($scope, $mdDialog, $mdToast, $location, AuthService) {
 
       $scope.register = function () {
-        $scope.registerToast = function($event) {
+        $scope.successToast = function($event) {
           $mdToast.showSimple('Thanks for registering!');
         };
+        $scope.errorToast = function($event) {
+          $mdToast.showSimple('Sorry, this username already exists');
+        };
 
-        $scope.registerToast();
         $scope.error = false;
         $scope.disabled = true;
 
         AuthService.register($scope.registerForm.username, $scope.registerForm.password)
 
           .then(function () {
+            $scope.successToast();
             $mdDialog.hide();
             $location.path('/login');
             $scope.disabled = false;
@@ -24,6 +27,7 @@
           })
 
           .catch(function () {
+            $scope.errorToast();
             $scope.error = true;
             $scope.errorMessage = "Something went wrong!";
             $scope.disabled = false;

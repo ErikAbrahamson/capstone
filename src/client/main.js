@@ -25,9 +25,10 @@ myApp.config(function ($routeProvider, $locationProvider) {
       template: 'partials/home.html',
       access: { restricted: true }
     })
-    .when('/two', {
-      template: '<h1>This is page two!</h1>',
-      access: { restricted: false }
+    .when('/task', {
+      templateUrl: 'partials/newtask.html',
+      controller: 'taskController',
+      access: { restricted: true }
     })
     .otherwise({
       redirectTo: '/'

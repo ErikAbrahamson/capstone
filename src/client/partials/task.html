@@ -1,0 +1,10 @@
+<md-list>
+  <md-list-item class="md-3-line" ng-repeat="task in tasks">
+  <h1>{{ task.title }}</h1>
+    <div class="md-list-item-text" layout="column">
+      <h3>{{ task.severity }}</h3>
+      <p>{{ task.description }}</p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+</md-list>

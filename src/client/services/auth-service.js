@@ -2,19 +2,23 @@
   'use strict';
 
   angular.module('myApp').factory('AuthService',
-    ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
+    ['$q', '$http', function ($q, $http) {
 
-      var user = false;
-      function isLoggedIn() {
+      var Obj = {}, user = false;
+
+      Obj.isLoggedIn = function() {
         if (user) return true;
         else return false;
-      }
-      
-      function getUserStatus() { return user; }
+      };
 
-      function login(username, password) {
+      Obj.getUserStatus = function() { return user; };
+
+      Obj.login = function(username, password) {
         var deferred = $q.defer();
-        $http.post('/user/login', { username: username, password: password  })
+        $http.post('/user/login', {
+          username: username,
+          password: password
+        })
 
           .success(function (data, status) {
             if (status === 200) {
@@ -32,9 +36,9 @@
           });
 
         return deferred.promise;
-      }
+      };
 
-      function logout() {
+      Obj.logout = function() {
         var deferred = $q.defer();
         $http.get('/user/logout')
 
@@ -49,29 +53,26 @@
           });
 
         return deferred.promise;
-      }
+      };
 
-      function register(username, password) {
+      Obj.register = function(username, password) {
         var deferred = $q.defer();
-        $http.post('/user/register', {username: username, password: password})
+        $http.post('/user/register', {
+          username: username,
+          password: password
+        })
 
-          .success(function (data, status) {
+          .success(function(data, status) {
             if (status === 200) deferred.resolve();
             else deferred.reject();
           })
 
-          .error(function (data) { deferred.reject(); });
+          .error(function(data) { deferred.reject(); });
 
         return deferred.promise;
-      }
+      };
 
       // return available functions for use in controllers
-      return ({
-        isLoggedIn: isLoggedIn,
-        getUserStatus: getUserStatus,
-        login: login,
-        logout: logout,
-        register: register
-      });
+      return Obj;
   }]);
 }());
