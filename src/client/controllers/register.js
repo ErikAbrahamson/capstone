@@ -16,23 +16,28 @@
         $scope.error = false;
         $scope.disabled = true;
 
-        AuthService.register($scope.registerForm.username, $scope.registerForm.password)
+        AuthService.register(
+          $scope.registerForm.username,
+          $scope.registerForm.password,
+          $scope.registerForm.email,
+          $scope.registerForm.phone,
+          $scope.registerForm.tasks
+        )
+        .then(function () {
+          $scope.successToast();
+          $mdDialog.hide();
+          $location.path('/login');
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        })
 
-          .then(function () {
-            $scope.successToast();
-            $mdDialog.hide();
-            $location.path('/login');
-            $scope.disabled = false;
-            $scope.registerForm = {};
-          })
-
-          .catch(function () {
-            $scope.errorToast();
-            $scope.error = true;
-            $scope.errorMessage = "Something went wrong!";
-            $scope.disabled = false;
-            $scope.registerForm = {};
-          });
+        .catch(function () {
+          $scope.errorToast();
+          $scope.error = true;
+          $scope.errorMessage = "Something went wrong!";
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        });
       };
   }]);
 }());

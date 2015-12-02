@@ -55,11 +55,13 @@
         return deferred.promise;
       };
 
-      Obj.register = function(username, password) {
+      Obj.register = function(usr, pw, email, phone) {
         var deferred = $q.defer();
         $http.post('/user/register', {
-          username: username,
-          password: password
+          username: usr,
+          password: pw,
+          email: email,
+          phone: phone
         })
 
           .success(function(data, status) {
