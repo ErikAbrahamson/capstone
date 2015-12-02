@@ -6,7 +6,6 @@
     function ($scope, $mdDialog, $rootScope, $location, AuthService) {
       $scope.login = function () {
 
-
         $scope.error = false;
         $scope.disabled = true;
         $rootScope.currentUser = null;
