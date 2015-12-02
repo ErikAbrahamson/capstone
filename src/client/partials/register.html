@@ -1,5 +1,6 @@
-<md-dialog flex="55" aria-label="Register" ng-cloak>
-  <form ng-controller="registerController" name="registerForm" ng-submit="register()">
+<md-dialog layout="column" ng-controller="registerController" flex="30" aria-label="Log in" ng-cloak>
+
+  <form ng-submit="register()">
 
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -44,17 +45,14 @@
           <div ng-message="required">This is required!</div>
         </div>
       </md-input-container>
-    </md-dialog-content>
 
     <md-dialog-actions layout="row">
-      <span flex></span>
-      <md-button ng-click="answer('not useful')">
-       Not Useful
-      </md-button>
-      <md-button ng-click="cancel()" style="margin-right:20px;">
-        Useful
-      </md-button>
-        <md-content layout-padding class="autoScroll">
+      <md-button flex="45" ng-click="cancel()">Cancel</md-button>
+      <md-button flex="45" type="submit">Register</md-button>
     </md-dialog-actions>
+
+    </md-dialog-content>
+
   </form>
+
 </md-dialog>

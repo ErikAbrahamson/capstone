@@ -9,7 +9,7 @@
         $scope.logoutToast = function($event) {
           $mdToast.showSimple('Goodbye, ' + $rootScope.currentUser + '!');
         };
-        
+
         $scope.logoutToast();
 
         $rootScope.currentUser = null;
