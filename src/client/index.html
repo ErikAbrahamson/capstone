@@ -18,9 +18,9 @@
     <div class="md-toolbar-tools">
     <h3 ng-show="currentUser">Hello, <strong>{{ currentUser }}</strong></h3>
       <span flex></span>
-      <md-button ng-controller="logoutController" ng-click="logout()">Logout</md-button>
-      <md-button ng-controller="dialogLoginController" ng-click="showForm($event)">Login</md-button>
-      <md-button ng-controller="dialogRegisterController"ng-click="showForm($event)">Register</md-button>
+      <md-button ng-controller="logoutController" ng-show="currentUser" ng-click="logout()">Logout</md-button>
+      <md-button ng-controller="dialogLoginController" ng-hide="currentUser" ng-click="showForm($event)">Login</md-button>
+      <md-button ng-controller="dialogRegisterController" ng-hide="currentUser" ng-click="showForm($event)">Register</md-button>
     </div>
   </md-toolbar>
 

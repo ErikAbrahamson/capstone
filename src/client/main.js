@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
 
 myApp.config(function ($routeProvider, $locationProvider) {
+
   $routeProvider
     .when('/', {
       templateUrl: 'partials/home.html',

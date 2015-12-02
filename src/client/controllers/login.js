@@ -2,9 +2,10 @@
   'use strict';
 
   angular.module('myApp').controller('loginController',
-    ['$scope', '$rootScope', '$location', 'AuthService',
-    function ($scope, $rootScope, $location, AuthService) {
+    ['$scope', '$mdDialog', '$rootScope', '$location', 'AuthService',
+    function ($scope, $mdDialog, $rootScope, $location, AuthService) {
       $scope.login = function () {
+
 
         $scope.error = false;
         $scope.disabled = true;
@@ -14,6 +15,7 @@
         AuthService.login($scope.loginForm.username, $scope.loginForm.password)
 
           .then(function () {
+            $mdDialog.hide();
             $rootScope.currentUser = $scope.loginForm.username;
             $location.path('/');
             $scope.disabled = false;
