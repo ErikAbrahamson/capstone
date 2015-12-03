@@ -5,16 +5,10 @@
     ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService', 'AuthService',
     function ($scope, $mdDialog, $rootScope, $location, TaskService, AuthService) {
 
-      $scope.populateTasks = function () {
-
-        // TaskService.getTasks($scope.)
+      TaskService.getTask($scope.currentUser._id)
 
           .then(function() {
-            $mdDialog.hide();
-            $rootScope.currentUser = $scope.loginForm.username;
-            $location.path('/');
-            $scope.disabled = false;
-            $scope.loginForm = {};
+            // $scope.tasks = $
           })
 
           .catch(function () {
@@ -23,6 +17,5 @@
             $scope.disabled = false;
             $scope.loginForm = {};
           });
-      };
   }]);
 }());
