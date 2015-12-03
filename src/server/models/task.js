@@ -3,15 +3,15 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var Task = new Schema({
-  title: String,
-  description: String,
-  deadline: Date,
-  priority: Number,
-  complete: String,
-  severity: Number,
+  title: { type: String },
+  description: { type: String },
+  deadline: { type: Date },
+  priority: { type: Number },
+  complete: { type: String },
+  severity: { type: Number },
   punishment_type: {
-    donation: Boolean,
-    twitter_post: Boolean
+    donation: { type: Boolean },
+    twitter_post: { type: Boolean }
   }
 });
 

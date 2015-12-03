@@ -2,8 +2,8 @@
   'use strict';
 
   angular.module('myApp').controller('loginController',
-    ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService', 'TaskService',
-    function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService, TaskService) {
+    ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService',
+    function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService) {
 
       $scope.login = function () {
 
@@ -21,13 +21,7 @@
         )
 
         .then(function () {
-          $scope.tempUser = AuthService.getUserStatus();
-          TaskService.getTasks($scope.tempUser._id)
-            .then(function() {
-              $rootScope.currentUser = AuthService.getUserStatus();
-              console.log($rootScope.currentUser);
-            })
-            .catch(function() { $scope.error = true; });
+          $rootScope.currentUser = AuthService.getUserStatus();
           $mdDialog.hide();
           $location.path('/');
         })
