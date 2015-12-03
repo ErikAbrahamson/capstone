@@ -22,7 +22,9 @@
 
           .success(function (data, status) {
             if (status === 200) {
+              console.log(data);
               user = data;
+              // console.log(user);
               deferred.resolve();
             } else {
               user = false;

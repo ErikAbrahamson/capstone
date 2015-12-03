@@ -21,13 +21,15 @@
         )
 
         .then(function () {
+          $scope.tempUser = AuthService.getUserStatus();
+          TaskService.getTasks($scope.tempUser._id)
+            .then(function() {
+              $rootScope.currentUser = AuthService.getUserStatus();
+              console.log($rootScope.currentUser);
+            })
+            .catch(function() { $scope.error = true; });
           $mdDialog.hide();
-          $rootScope.currentUser = AuthService.getUserStatus();
-          $scope.tasks = TaskService.getTasks($rootScope.currentUser._id);
-          console.log($scope.tasks);
           $location.path('/');
-          $scope.disabled = false;
-          $scope.loginForm = {};
         })
 
         .catch(function () {

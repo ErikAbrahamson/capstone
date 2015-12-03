@@ -1,7 +1,10 @@
 var express = require('express'),
     router = express.Router(),
     passport = require('passport'),
-    User = require('../models/user.js');
+    User = require('../models/user.js'),
+    Task = require('../models/task.js'),
+    mongoose = require('mongoose-q')(require('mongoose'), { spread: true });
+
 
 router.post('/register', function(req, res) {
   User.register(new User({
@@ -24,7 +27,11 @@ router.post('/login', function(req, res, next) {
       if (error) {
         return res.status(500).json({error: 'Could not log in user'});
       }
-      res.status(200).json(user);
+      User.findById(user._id)
+        .populate('tasks').exec(function(error, response) {
+        if (error) res.json(error);
+        else res.status(200).json(response);
+      });
     });
   })(req, res, next);
 });

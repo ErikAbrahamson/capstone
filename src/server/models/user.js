@@ -3,10 +3,10 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new Schema({
-  username: { type: String },
-  password: { type: String },
-  email: { type: String },
-  phone: { type: String },
+  username: String,
+  password: String,
+  email: String,
+  phone: String,
   tasks: [{type: Schema.Types.ObjectId, ref: 'tasks'}]
 });
 

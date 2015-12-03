@@ -5,10 +5,13 @@
     ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService',
     function ($scope, $mdDialog, $rootScope, $location, TaskService) {
 
-      TaskService.getTask($rootScope.currentUser._id)
+      TaskService.getTasks($rootScope.currentUser._id)
 
           .then(function() {
             $scope.tasks =
+            $location.path('/');
+            $scope.disabled = false;
+            $scope.loginForm = {};
           })
 
           .catch(function () {
