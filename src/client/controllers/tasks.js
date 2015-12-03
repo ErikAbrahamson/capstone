@@ -2,13 +2,13 @@
   'use strict';
 
   angular.module('myApp').controller('taskController',
-    ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService', 'AuthService',
-    function ($scope, $mdDialog, $rootScope, $location, TaskService, AuthService) {
+    ['$scope', '$mdDialog', '$rootScope', '$location', 'TaskService',
+    function ($scope, $mdDialog, $rootScope, $location, TaskService) {
 
-      TaskService.getTask($scope.currentUser._id)
+      TaskService.getTask($rootScope.currentUser._id)
 
           .then(function() {
-            // $scope.tasks = $
+            $scope.tasks =
           })
 
           .catch(function () {
