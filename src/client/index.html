@@ -22,7 +22,8 @@
       <md-button ng-controller="dialogRegisterController" ng-hide="currentUser" ng-click="showForm($event)">Register</md-button>
     </div>
   </md-toolbar>
-  <md-button style="top: auto; right: 20px; bottom: 20px; left: auto; position: absolute;" class="md-fab md-warn" aria-label="Add Task">
+
+  <md-button ng-show="currentUser" ng-controller="dialogTaskController" ng-click="showForm($event)" style="top: auto; right: 20px; bottom: 20px; left: auto; position: absolute;" class="md-fab md-warn" aria-label="Add Task">
     <ng-md-icon icon="add" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon>
   </md-button>
 
@@ -63,6 +64,8 @@
   <script src="./services/auth-service.js"></script>
   <script src="./controllers/dialog-login.js"></script>
   <script src="./controllers/dialog-register.js"></script>
+  <script src="./controllers/dialog-task.js"></script>
+  <script src="./controllers/task.js"></script>
   <script src="./controllers/login.js"></script>
   <script src="./controllers/logout.js"></script>
   <script src="./controllers/register.js"></script>

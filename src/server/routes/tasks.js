@@ -23,7 +23,7 @@ router.post('/user/:id/task', function(req, res, next) {
     severity: req.body.severity,
     punishment_type: {
       donation: req.body.donation,
-      twitter_post: req.body.twitter_post
+      text_message: req.body.text_message
     }
   });
     newTask.saveQ()

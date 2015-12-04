@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('myApp').controller('taskDialogController',
+  angular.module('myApp').controller('dialogTaskController',
     ['$scope', '$mdDialog', '$mdMedia',
     function ($scope, $mdDialog, $mdMedia) {
 

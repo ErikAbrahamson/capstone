@@ -11,7 +11,7 @@ var Task = new Schema({
   severity: { type: Number },
   punishment_type: {
     donation: { type: Boolean },
-    twitter_post: { type: Boolean }
+    text_message: { type: Boolean }
   }
 });
 

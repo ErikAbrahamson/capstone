@@ -1,6 +1,10 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
 
-myApp.config(function ($routeProvider, $locationProvider) {
+myApp.config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
+
+  $mdThemingProvider.theme('docs-dark', 'default')
+    .primaryPalette('yellow')
+    .dark();
 
   $routeProvider
     .when('/', {

@@ -29,7 +29,7 @@ describe('User Tasks', function() {
       severity: 10,
       punishment_type : {
         donation: true,
-        twitter_post: false
+        text_message: false
       }
     });
     newTask.save();
@@ -71,7 +71,7 @@ describe('User Tasks', function() {
             res.body[0].should.have.property('severity');
             res.body[0].should.have.property('punishment_type');
             res.body[0].punishment_type.should.have.property('donation');
-            res.body[0].punishment_type.should.have.property('twitter_post');
+            res.body[0].punishment_type.should.have.property('text_message');
             res.body[0].title.should.equal('Finish Tests');
             res.body[0].priority.should.equal(10);
             done();
@@ -96,7 +96,7 @@ describe('User Tasks', function() {
             res.body.should.have.property('severity');
             res.body.should.have.property('punishment_type');
             res.body.punishment_type.should.have.property('donation');
-            res.body.punishment_type.should.have.property('twitter_post');
+            res.body.punishment_type.should.have.property('text_message');
             res.body.title.should.equal('Finish Tests');
             res.body.priority.should.equal(10);
             done();
@@ -119,7 +119,7 @@ describe('User Tasks', function() {
             'severity': 10,
             'punishment_type' : {
               'donation': true,
-              'twitter_post': false
+              'text_message': false
             }
           })
           .end(function(err, res) {
@@ -166,7 +166,7 @@ describe('User Tasks', function() {
             res.body.should.have.property('severity');
             res.body.should.have.property('punishment_type');
             res.body.punishment_type.should.have.property('donation');
-            res.body.punishment_type.should.have.property('twitter_post');
+            res.body.punishment_type.should.have.property('text_message');
             res.body.title.should.equal('Finish Tests');
             res.body.priority.should.equal(10);
             done();

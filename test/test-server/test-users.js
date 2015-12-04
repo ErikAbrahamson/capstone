@@ -28,7 +28,7 @@ describe('Userbase', function() {
       severity: 10,
       punishment_type : {
         donation: true,
-        twitter_post: false
+        text_message: false
       }
     });
     var secondTask = new Task({
@@ -40,7 +40,7 @@ describe('Userbase', function() {
       severity: 10,
       punishment_type : {
         donation: false,
-        twitter_post: true
+        text_message: true
       }
     });
     var newUser = new User({
