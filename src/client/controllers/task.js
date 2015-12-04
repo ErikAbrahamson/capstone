@@ -2,20 +2,22 @@
   'use strict';
 
   angular.module('myApp').controller('taskController',
-    ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService',
-    function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService) {
+    ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService', 'TaskService',
+    function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService, TaskService) {
 
       $scope.addTask = function () {
+        $scope.successToast = function($event) {
+          $mdToast.showSimple('Task added!');
+        };
 
         $scope.errorToast = function($event) {
-          $mdToast.showSimple('Something went wrong');
+          $mdToast.showSimple('Sorry, something went wrong. Please try again');
         };
 
         $scope.error = false;
-        $scope.disabled = true;
-        $rootScope.currentUser = null;
 
         TaskService.addTask(
+          $rootScope.currentUser._id,
           $scope.taskForm.title,
           $scope.taskForm.description,
           $scope.taskForm.deadline,
@@ -27,6 +29,7 @@
         )
 
         .then(function () {
+          $scope.successToast();
           $mdDialog.hide();
           $location.path('/');
         })

@@ -6,26 +6,33 @@
 
       var Obj = {}, tasks = null;
 
-      Obj.getSingleTask = function(userID, taskID) {
-        return $http.get('/user/' + userID + '/task/' + taskID);
-      };
-
-      Obj.getTasks = function(userID) {
+      Obj.addTask = function(userID, title, description, deadline, priority, severity, donation, text) {
         var deferred = $q.defer();
 
-        $http.get('/user/' + userID + '/tasks')
+        $http.post('/user/' + userID + '/task/', {
+          title: title,
+          description: description,
+          deadline: deadline,
+          priority: priority,
+          severity: severity,
+          punishment_type: {
+            donation: donation,
+            text_message: text
+          }
+        })
 
-          .success(function(data) {
-            tasks = data;
-            deferred.resolve();
+          .success(function(data, status) {
+            if (status === 200) deferred.resolve();
+            else deferred.reject();
           })
 
-          .error(function(data) {
-            tasks = false;
-            deferred.reject();
-          });
+          .error(function(data) { deferred.reject(); });
 
         return deferred.promise;
+      };
+
+      Obj.getSingleTask = function(userID, taskID) {
+        return $http.get('/user/' + userID + '/task/' + taskID);
       };
 
       return Obj;
