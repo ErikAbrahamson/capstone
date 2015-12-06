@@ -7,17 +7,17 @@
         <h2>Log in</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="cancel()">
-          <ng-md-icon icon="close" style="fill: #abcdef"></ng-md-icon>
+          <ng-md-icon icon="close" style="fill: #FFF"></ng-md-icon>
         </md-button>
       </div>
     </md-toolbar>
 
-    <md-dialog-content>
+    <md-dialog-content layout-align="column">
 
-      <md-input-container class="md-block">
+      <md-input-container>
         <label>User Name</label>
-        <!-- <ng-md-icon icon="person" style="fill: #abcdef"></ng-md-icon> -->
-        <input type="text" name="username" ng-model="loginForm.username" required>
+        <!-- <ng-md-icon icon="person" style="fill: #FFF"></ng-md-icon> -->
+        <input class="md-warn" type="text" name="username" ng-model="loginForm.username" required>
         <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
           <div ng-message="required">This is required!</div>
         </div>
@@ -37,7 +37,7 @@
       <md-button flex="45" type="submit">Log in</md-button>
     </md-dialog-actions>
 
-    <md-dialog-content>
+  </md-dialog-content>
 
   </form>
 

@@ -1,10 +1,15 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
 
-myApp.config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
+myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
 
-  $mdThemingProvider.theme('docs-dark', 'default')
-    .primaryPalette('yellow')
-    .dark();
+  $mdThemingProvider.theme('default')
+    .primaryPalette('teal')
+    .accentPalette('deep-orange')
+    .warnPalette('red')
+    // .backgroundPalette('blue-grey', {
+    //   'default': '200'
+    // });
+    // .dark();
 
   $routeProvider
     .when('/', {

@@ -13,7 +13,6 @@
         $interval(function() {
           $scope.diff = null;
           $scope.diff = Math.floor(($scope.future.getTime() - new Date().getTime()) / 1000);
-          console.log(Util.dhms($scope.diff));
           return element.text(Util.dhms($scope.diff));
         }, 1000);
       }
