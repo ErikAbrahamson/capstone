@@ -5,6 +5,10 @@
     ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService', 'TaskService',
     function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService, TaskService) {
 
+      $scope.convertDate = function(deadline) {
+        return moment(deadline).format('MMMM Do YYYY, h:mm:ss');
+      };
+
       $scope.addTask = function () {
         $scope.successToast = function($event) {
           $mdToast.show(

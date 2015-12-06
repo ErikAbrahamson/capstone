@@ -10,6 +10,7 @@
         var deferred = $q.defer();
         $http.get('/user/' + userID + '/tasks/')
           .success(function(data) {
+            console.log(data);
             $rootScope.tasks = data;
             deferred.reject();
           })
