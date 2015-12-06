@@ -30,7 +30,11 @@
 
   <!-- <div flex layout="row"> -->
 
-    <md-content layout-padding>
+  <div ng-controller="taskController">
+    <div ng-repeat="task in tasks"><h2>{{ task.title }}</h2></div>
+  </div>
+
+    <!-- <md-content layout-padding>
       <div ng-show="currentUser" ng-controller="gridController as gridctrl">
         <md-content layout-padding>
           <md-grid-list
@@ -46,7 +50,7 @@
          </md-grid-list>
        </md-content>
      </div>
-    </md-content>
+    </md-content> -->
 
   <!-- </div> -->
 

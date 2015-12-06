@@ -2,9 +2,22 @@
   'use strict';
 
   angular.module('myApp').factory('TaskService',
-    ['$q', '$http', function ($q, $http) {
+    ['$q', '$http', '$rootScope', function ($q, $http, $rootScope) {
 
       var Obj = {}, tasks = null;
+
+      Obj.getTasks = function(userID) {
+        var deferred = $q.defer();
+        $http.get('/user/' + userID + '/tasks/')
+          .success(function(data) {
+            $rootScope.tasks = data;
+            deferred.reject();
+          })
+          .error(function(error) {
+            deferred.reject();
+          });
+          return deferred.promise;
+      };
 
       Obj.addTask = function(userID, title, description, deadline, priority, severity, donation, text) {
         var deferred = $q.defer();
