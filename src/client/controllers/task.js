@@ -7,7 +7,12 @@
 
       $scope.addTask = function () {
         $scope.successToast = function($event) {
-          $mdToast.showSimple('Task added!');
+          $mdToast.show(
+            $mdToast.simple()
+            .content('Task added!!')
+            .position('top right')
+            .hideDelay(3000)
+          );
         };
 
         $scope.errorToast = function($event) {
