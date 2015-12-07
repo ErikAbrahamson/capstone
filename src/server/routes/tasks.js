@@ -37,7 +37,10 @@ router.post('/user/:id/task', function(req, res) {
           .catch(function(error) { res.send(error); })
           .done();
 
-      });
+      })
+
+      .catch(function(error) { res.send(error); })
+      .done();
 });
 
 router.get('/user/:userid/task/:taskid', function(req, res, next) {
