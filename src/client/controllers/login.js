@@ -5,6 +5,24 @@
     ['$scope', '$mdToast', '$mdDialog', '$rootScope', '$location', 'AuthService', 'TaskService',
     function ($scope, $mdToast, $mdDialog, $rootScope, $location, AuthService, TaskService) {
 
+      $rootScope.getTasks = function () {
+
+        $scope.error = false;
+        // $rootScope.tasks = null;
+
+        TaskService.bindTasks($rootScope.currentUser._id)
+
+          .then(function () {
+            $rootScope.tasks = TaskService.getUserTasks();
+            $location.path('/');
+          })
+
+          .catch(function() {
+            $scope.error = true;
+          });
+
+      };
+
       $scope.login = function () {
 
         $scope.errorToast = function($event) {
@@ -14,6 +32,7 @@
         $scope.error = false;
         $scope.disabled = true;
         $rootScope.currentUser = null;
+        $rootScope.tasks = null;
 
         AuthService.login(
           $scope.loginForm.username,
@@ -22,7 +41,7 @@
 
         .then(function () {
           $rootScope.currentUser = AuthService.getUserStatus();
-          TaskService.getTasks($rootScope.currentUser._id);
+          $rootScope.getTasks();
           $mdDialog.hide();
           $location.path('/');
         })

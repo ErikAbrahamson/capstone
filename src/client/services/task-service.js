@@ -4,21 +4,22 @@
   angular.module('myApp').factory('TaskService',
     ['$q', '$http', '$rootScope', function ($q, $http, $rootScope) {
 
-      var Obj = {}, tasks = null;
+      var Obj = {}, tasks = false;
 
-      Obj.getTasks = function(userID) {
+      Obj.bindTasks = function(userID) {
         var deferred = $q.defer();
         $http.get('/user/' + userID + '/tasks/')
           .success(function(data) {
-            console.log(data);
-            $rootScope.tasks = data;
-            deferred.reject();
+            tasks = data;
+            deferred.resolve();
           })
           .error(function(error) {
             deferred.reject();
           });
           return deferred.promise;
       };
+
+      Obj.getUserTasks = function() { return tasks; };
 
       Obj.addTask = function(userID, title, description, deadline, priority, severity, donation, text) {
         var deferred = $q.defer();

@@ -38,7 +38,7 @@
         )
 
         .then(function () {
-          TaskService.getTasks($rootScope.currentUser._id);
+          $rootScope.getTasks();
           $scope.successToast();
           $mdDialog.hide();
           $location.path('/');
