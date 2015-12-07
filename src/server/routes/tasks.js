@@ -34,7 +34,8 @@ router.post('/user/:id/task', function(req, res) {
         }, id = req.params.id;
         User.findByIdAndUpdateQ(id, update, options)
           .then(function(result) { res.json(result); })
-          .catch(function(error) { res.send(error); });
+          .catch(function(error) { res.send(error); })
+          .done();
 
       });
 });
