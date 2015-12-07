@@ -68,7 +68,6 @@ describe('User Tasks', function() {
             res.body[0].should.have.property('deadline');
             res.body[0].should.have.property('priority');
             res.body[0].should.have.property('complete');
-            res.body[0].should.have.property('severity');
             res.body[0].should.have.property('punishment_type');
             res.body[0].punishment_type.should.have.property('donation');
             res.body[0].punishment_type.should.have.property('text_message');
@@ -93,7 +92,6 @@ describe('User Tasks', function() {
             res.body.should.have.property('deadline');
             res.body.should.have.property('priority');
             res.body.should.have.property('complete');
-            res.body.should.have.property('severity');
             res.body.should.have.property('punishment_type');
             res.body.punishment_type.should.have.property('donation');
             res.body.punishment_type.should.have.property('text_message');
@@ -116,7 +114,6 @@ describe('User Tasks', function() {
             'deadline': date.setDate(15),
             'priority': 10,
             'complete': false,
-            'severity': 10,
             'punishment_type' : {
               'donation': true,
               'text_message': false
@@ -163,7 +160,6 @@ describe('User Tasks', function() {
             res.body.should.have.property('deadline');
             res.body.should.have.property('priority');
             res.body.should.have.property('complete');
-            res.body.should.have.property('severity');
             res.body.should.have.property('punishment_type');
             res.body.punishment_type.should.have.property('donation');
             res.body.punishment_type.should.have.property('text_message');

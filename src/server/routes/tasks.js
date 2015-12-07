@@ -13,14 +13,13 @@ router.get('/user/:id/tasks', function(req, res, next) {
   });
 });
 
-router.post('/user/:id/task', function(req, res) {
+router.post('/user/:id/task', function(req, res, next ) {
   var newTask = new Task({
     title: req.body.title,
     description: req.body.description,
     deadline: req.body.deadline,
     priority: req.body.priority,
     complete: req.body.complete,
-    severity: req.body.severity,
     punishment_type: {
       donation: req.body.donation,
       text_message: req.body.text_message
@@ -34,9 +33,7 @@ router.post('/user/:id/task', function(req, res) {
         }, id = req.params.id;
         User.findByIdAndUpdateQ(id, update, options)
           .then(function(result) { res.json(result); })
-          .catch(function(error) { res.send(error); })
-          .done();
-
+          .catch(function(error) { res.send(error); });
       })
 
       .catch(function(error) { res.send(error); })

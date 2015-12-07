@@ -8,7 +8,6 @@ var Task = new Schema({
   deadline: { type: Date },
   priority: { type: Number },
   complete: { type: String },
-  severity: { type: Number },
   punishment_type: {
     donation: { type: Boolean },
     text_message: { type: Boolean }

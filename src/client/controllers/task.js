@@ -32,7 +32,6 @@
           $scope.taskForm.deadline,
           $scope.taskForm.priority,
           $scope.taskForm.complete,
-          $scope.taskForm.severity,
           $scope.taskForm.punishment_type.donation,
           $scope.taskForm.punishment_type.text_message
         )

@@ -29,7 +29,6 @@
           description: description,
           deadline: deadline,
           priority: priority,
-          severity: severity,
           punishment_type: {
             donation: donation,
             text_message: text
