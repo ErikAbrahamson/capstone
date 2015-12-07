@@ -13,7 +13,7 @@ router.get('/user/:id/tasks', function(req, res, next) {
   });
 });
 
-router.post('/user/:id/task', function(req, res, next) {
+router.post('/user/:id/task', function(req, res) {
   var newTask = new Task({
     title: req.body.title,
     description: req.body.description,

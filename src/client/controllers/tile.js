@@ -9,7 +9,9 @@
         return moment(deadline).format('MMMM Do YYYY, h:mm:ss');
       };
 
-      // TaskService.bindTasks($rootScope.currentUser._id)
+      $rootScope.customTiles = function(currentTasks) {
+        return currentTasks.forEach(color)
+      };
 
   }]);
 }());

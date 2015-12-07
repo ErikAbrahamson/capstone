@@ -8,8 +8,6 @@
       $rootScope.getTasks = function () {
 
         $scope.error = false;
-        // $rootScope.tasks = null;
-
         TaskService.bindTasks($rootScope.currentUser._id)
 
           .then(function () {
