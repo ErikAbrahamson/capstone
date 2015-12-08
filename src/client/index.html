@@ -29,31 +29,32 @@
   </md-button>
 
   <md-content layout-padding>
-    <div ng-if="currentUser" ng-controller="AppCtrl as appCtrl">
+    <div ng-if="currentUser" ng-controller="tileController as tile">
       <md-content layout-padding>
         <md-grid-list
           md-cols-gt-md="8" md-cols-sm="3" md-cols-md="8"
           md-row-height-gt-md="1:1" md-row-height="4:3"
-          md-gutter-gt-md="16px" md-gutter-gt-sm="8px" md-gutter="4px">
+          md-gutter-gt-md="8px" md-gutter-gt-sm="8px" md-gutter="4px">
 
           <md-grid-tile ng-repeat="tile in tiles" ng-style="{'background': tile.color}"
-            md-colspan-gt-sm="{{tile.colspan}}"
-            md-rowspan-gt-sm="{{tile.rowspan}}">
-            <md-grid-tile-header>
-              <h4>{{ tile.title }}</h4>
+            md-colspan-gt-sm="{{ tile.colspan }}"
+            md-rowspan-gt-sm="{{ tile.rowspan }}"
+            md-colspan-sm="1">
+            <md-grid-tile-header layout layout-align="space-around center">
+              <h4 class="md-title">{{ tile.title }}</h4>
                 <!-- <ng-md-icon icon="arrow_drop_down_circle" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon> -->
             </md-grid-tile-header>
-            <div layout="column" layout-align="center center">
-              <div layout>
+            <div layout="column" layout-align="space-around center">
+              <div flex>
                 <ng-md-icon icon="timer" size="60" style="fill: #FFF;"></ng-md-icon>
               </div>
-              <div layout>
-                <h5 timer deadline="tile.deadline">&nbsp;</h5>
+              <div flex>
+                <h5 class="md-body-2" timer deadline="tile.deadline"></h5>
               </div>
             </div>
-            <!-- <md-grid-tile-footer layout-align="end center">
+            <md-grid-tile-footer layout layout-align="space-around center">
               <ng-md-icon icon="more_vert" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon>
-            </md-grid-tile-footer> -->
+            </md-grid-tile-footer>
           </md-grid-tile>
 
        </md-grid-list>
@@ -61,7 +62,6 @@
   </md-content>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/en-ca.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('myApp').controller('AppCtrl',
+  angular.module('myApp').controller('tileController',
     ['$scope', '$rootScope', '$location', 'TaskService', 'AuthService',
     function($scope, $rootScope, $location, TaskService, AuthService) {
 
