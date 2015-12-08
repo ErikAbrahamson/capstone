@@ -16,6 +16,8 @@
 
   <md-toolbar>
     <div class="md-toolbar-tools">
+    <md-icon ng-show="currentUser" style="color: #FFF; width: 60px; height: 60px;" md-svg-icon="./public/img/pavlov-icon.svg"></md-icon>
+    <span flex="5"></span>
     <h3 ng-show="currentUser">Hello, <strong>{{ currentUser.username }}</strong></h3>
       <span flex></span>
       <md-button ng-controller="logoutController" ng-show="currentUser" ng-click="logout()">Logout</md-button>
@@ -27,7 +29,7 @@
   <md-content id="landing" ng-hide="currentUser" ng-cloak>
     <div back-img="./public/img/pavlov.jpg"id="landing" layout-padding layout-wrap layout="column" layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
       <div layout="column" layout-align="space-around center">
-        <h1 class="md-display-4"><strong style="color: #FF5722">Pavlov</strong></h1>
+        <h1 class="md-display-4"><strong style="color: #FF5722">Pavlov&nbsp;</strong><md-icon ng-hide="currentUser" style="width: 100px; height: 100px;" md-svg-icon="./public/img/pavlov-icon.svg"></md-icon></h1>
         <h3 class="md-display-1"><i style="color: #FF5722">A task management app that keeps you accountable</i></h3>
       </div>
 
