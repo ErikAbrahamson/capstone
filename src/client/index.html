@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <md-toolbar layout>
+  <md-toolbar>
     <div class="md-toolbar-tools">
     <h3 ng-show="currentUser">Hello, <strong>{{ currentUser.username }}</strong></h3>
       <span flex></span>
@@ -24,12 +24,25 @@
     </div>
   </md-toolbar>
 
+  <md-content id="landing" ng-hide="currentUser" ng-cloak>
+    <div back-img="./public/img/pavlov.jpg"id="landing" layout-padding layout="column" layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
+      <div layout="column" layout-align="space-around center">
+        <h1 class="md-display-4"><strong style="color: #FF5722">Pavlov</strong></h1>
+        <h3 class="md-display-1"><i style="color: #FF5722">A task management app that keeps you accountable<i></h3>
+        <md-divider></md-divider>
+        <p style="color: #FFF">Lorem ipsum dolor sit amet, ut labores delicata mandamus mei. Sumo sonet an vix. Nostrud detraxit pro in, zril integre explicari cu ius. Ne per commune interpretaris mediocritatem, vix moderatius sadipscing ei. Fierent sensibus usu ea.
+
+Cu duo habemus senserit, ea pri ignota feugiat persecuti, oporteat prodesset te sed. No esse aperiri est, vivendo conclusionemque vix et. Elitr postea habemus mei ne. Pri tamquam corrumpit an. Ferri numquam perpetua in sea, sed id harum saepe interesset. Dicunt alienum constituam quo ei, ius eripuit sanctus interpretaris ut.</p>
+      </div>
+    </div>
+  </md-content>
+
   <md-button ng-show="currentUser" ng-controller="dialogTaskController" ng-click="showForm($event)" style="top: auto; right: 20px; bottom: 20px; left: auto; position: fixed;" class="md-fab md-warn" aria-label="Add Task">
     <ng-md-icon icon="add" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon>
   </md-button>
 
   <md-content layout-padding ng-if="currentUser" ng-controller="tileController as tile">
-    <md-grid-list
+    <md-grid-list layout-align-sm="space-around center" layout-align-gt-sm="space-around center"
       md-cols-gt-md="8" md-cols-sm="1" md-cols-md="3"
       md-row-height-gt-md="1:1" md-row-height="4:3"
       md-gutter-gt-md="8px" md-gutter-gt-sm="8px" md-gutter="4px">
@@ -40,20 +53,20 @@
         md-colspan-gt-sm="{{ tile.colspan }}"
         md-rowspan-gt-sm="{{ tile.rowspan }}"
         md-colspan-sm="1">
-        <md-grid-tile-header layout layout-align="space-around center">
+        <md-grid-tile-header layout layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
           <h4 class="md-title">{{ tile.title }}</h4>
             <!-- <ng-md-icon icon="arrow_drop_down_circle" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon> -->
         </md-grid-tile-header>
-        <div layout="column" layout-align="space-around center">
+        <div layout="column" layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
           <div flex>
             <ng-md-icon icon="timer" size="64" style="fill: #FFF;"></ng-md-icon>
           </div>
           <div flex>
-            <span style="color: #FFF" class="md-subhead">{{ tile.description }}</span>
+            <!-- <span style="color: #FFF" class="md-subhead">{{ tile.description }}</span> -->
           </div>
         </div>
 
-        <md-grid-tile-footer layout layout-align="space-around center">
+        <md-grid-tile-footer layout layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
           <h5 style="color: #FFF;" class="md-body-2" timer deadline="tile.deadline"></h5>
         </md-grid-tile-footer>
       </md-grid-tile>
@@ -81,6 +94,7 @@
   <script src="./controllers/register.js"></script>
   <script src="./controllers/tile.js"></script>
   <script src="./directives/timer.js"></script>
+  <script src="./directives/landing.js"></script>
   <script src="./controllers/grid.js"></script>
 
 </body>

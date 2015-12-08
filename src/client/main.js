@@ -6,6 +6,7 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     .primaryPalette('teal')
     .accentPalette('deep-orange')
     .warnPalette('red');
+    // .dark();
 
   $mdThemingProvider.definePalette('tile', {
     '50'  :'#F44336',

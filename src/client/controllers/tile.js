@@ -25,7 +25,6 @@
                 rowspan: getSize($rootScope.tasks[i].priority),
               });
             }
-            console.log(tiles);
             return tiles;
           })();
           $location.path('/');

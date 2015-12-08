@@ -15,8 +15,8 @@
     <md-dialog-content layout-align="column">
 
       <md-input-container>
-        <label>User Name</label>
         <!-- <ng-md-icon icon="person" style="fill: #FFF"></ng-md-icon> -->
+        <label>User Name</label>
         <input class="md-warn" type="text" name="username" ng-model="loginForm.username" required>
         <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
           <div ng-message="required">This is required!</div>
