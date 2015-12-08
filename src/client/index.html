@@ -35,7 +35,8 @@
       md-gutter-gt-md="8px" md-gutter-gt-sm="8px" md-gutter="4px">
 
       <md-grid-tile ng-repeat="tile in tiles" ng-style="{'background': tile.color}"
-        layout-align="space-around center"
+        layout-align-sm="space-around center"
+        layout-align-gt-sm="space-around center"
         md-colspan-gt-sm="{{ tile.colspan }}"
         md-rowspan-gt-sm="{{ tile.rowspan }}"
         md-colspan-sm="1">
