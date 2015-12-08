@@ -7,7 +7,10 @@ var Task = new Schema({
   description: { type: String },
   deadline: { type: Date },
   priority: { type: Number },
-  complete: { type: String },
+  complete: {
+    type: String,
+    default: false
+  },
   punishment_type: {
     donation: { type: Boolean },
     text_message: { type: Boolean }
