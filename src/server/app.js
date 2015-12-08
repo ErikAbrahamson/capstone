@@ -9,7 +9,6 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     config = require('./_config.js'),
-    MongoStore = require('connect-mongo')(session),
     localStrategy = require('passport-local').Strategy;
     require('dotenv').load();
 
@@ -26,19 +25,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(require('express-session')({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: false
-// }));
 app.use(require('express-session')({
     secret: 'keyboard cat',
-    saveUninitialized: false, // don't create session until something stored
-    resave: false, //don't save session if unmodified
-    store: new MongoStore({
-        url: config.MONGO_URI[process.env.NODE_ENV],
-        touchAfter: 24 * 3600 // time period in seconds
-    })
+    resave: false,
+    saveUninitialized: false
 }));
 
 app.use(passport.initialize());
