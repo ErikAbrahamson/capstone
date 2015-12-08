@@ -10,6 +10,7 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     config = require('./_config.js'),
+    text = require('textbelt'),
     cronJob = require('cron').CronJob,
     localStrategy = require('passport-local').Strategy;
 

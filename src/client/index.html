@@ -104,19 +104,19 @@
         md-rowspan-gt-sm="{{ tile.rowspan }}"
         md-colspan-sm="1">
         <md-grid-tile-header layout layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
-          <h4 class="md-title">{{ tile.title }}</h4>
+          <h4 class="md-headline">{{ tile.title }}</h4>
         </md-grid-tile-header>
         <div layout="column" layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
           <div flex>
             <ng-md-icon icon="timer" size="64" style="fill: #FFF;"></ng-md-icon>
           </div>
           <div flex>
-            <!-- <span style="color: #FFF" class="md-subhead">{{ tile.description }}</span> -->
+            <span class="md-body-1">{{ tile.description }}</span>
           </div>
         </div>
 
         <md-grid-tile-footer layout layout-align-sm="space-around center" layout-align-gt-sm="space-around center">
-          <h5 style="color: #FFF;" class="md-body-2" timer deadline="tile.deadline"></h5>
+          <h5 style="color: #FFF;" class="md-subhead" timer deadline="tile.deadline"></h5>
         </md-grid-tile-footer>
       </md-grid-tile>
 
