@@ -10,10 +10,7 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     config = require('./_config.js'),
-    twilio = require('twilio'),
     cronJob = require('cron').CronJob,
-    twilioCFG = require('./twilio/config.js'),
-    twilioNotifications = require('./twilio/twilioNotifications.js'),
     localStrategy = require('passport-local').Strategy;
 
 var User = require('./models/user.js');
