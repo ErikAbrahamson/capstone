@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'ngA
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('teal')
+    .primaryPalette('deep-orange')
     .accentPalette('deep-orange')
     .warnPalette('red');
     // .dark();
