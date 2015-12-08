@@ -1,7 +1,3 @@
-/**
- * Module Dependencies
- */
-
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var browserSync = require('browser-sync');

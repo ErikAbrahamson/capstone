@@ -29,8 +29,8 @@
 
         $scope.error = false;
         $scope.disabled = true;
-        $rootScope.currentUser = null;
-        $rootScope.tasks = null;
+        // $rootScope.currentUser = null;
+        // $rootScope.tasks = null;
 
         AuthService.login(
           $scope.loginForm.username,
@@ -51,6 +51,8 @@
           $scope.disabled = false;
           $scope.loginForm = {};
         });
+
       };
+
   }]);
 }());

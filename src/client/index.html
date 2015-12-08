@@ -29,24 +29,26 @@
   </md-button>
 
   <md-content layout-padding>
-    <div ng-show="currentUser" ng-controller="taskController">
+    <div ng-if="currentUser" ng-controller="AppCtrl as appCtrl">
       <md-content layout-padding>
         <md-grid-list
-          md-cols-gt-md="12" md-cols-sm="3" md-cols-md="8"
+          md-cols-gt-md="8" md-cols-sm="3" md-cols-md="8"
           md-row-height-gt-md="1:1" md-row-height="4:3"
           md-gutter-gt-md="16px" md-gutter-gt-sm="8px" md-gutter="4px">
 
-          <md-grid-tile ng-repeat="task in tasks" class="{{ task.color }}" md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+          <md-grid-tile ng-repeat="tile in tiles" ng-style="{'background': tile.color}"
+            md-colspan-gt-sm="{{tile.colspan}}"
+            md-rowspan-gt-sm="{{tile.rowspan}}">
             <md-grid-tile-header>
-              <h2>{{ task.title }}</h2>
+              <h4>{{ tile.title }}</h4>
                 <!-- <ng-md-icon icon="arrow_drop_down_circle" size="36" style="fill: #FFF; vertical-align: middle; display: inline-block; line-height: 1;"></ng-md-icon> -->
             </md-grid-tile-header>
             <div layout="column" layout-align="center center">
               <div layout>
-                <ng-md-icon icon="timer" size="60" style="fill: #000;"></ng-md-icon>
+                <ng-md-icon icon="timer" size="60" style="fill: #FFF;"></ng-md-icon>
               </div>
               <div layout>
-                <h3 timer deadline="task.deadline">&nbsp;</h3>
+                <h5 timer deadline="tile.deadline">&nbsp;</h5>
               </div>
             </div>
             <!-- <md-grid-tile-footer layout-align="end center">
@@ -74,10 +76,10 @@
   <script src="./controllers/dialog-task.js"></script>
   <script src="./controllers/task.js"></script>
   <script src="./controllers/bind.js"></script>
-  <script src="./controllers/tile.js"></script>
   <script src="./controllers/login.js"></script>
   <script src="./controllers/logout.js"></script>
   <script src="./controllers/register.js"></script>
+  <script src="./controllers/tile.js"></script>
   <script src="./directives/timer.js"></script>
   <script src="./controllers/grid.js"></script>
 

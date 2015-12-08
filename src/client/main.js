@@ -5,11 +5,26 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('teal')
     .accentPalette('deep-orange')
-    .warnPalette('red')
-    // .backgroundPalette('blue-grey', {
-    //   'default': '200'
-    // });
-    // .dark();
+    .warnPalette('red');
+
+  $mdThemingProvider.definePalette('tile', {
+    '50'  :'#F44336',
+    '100' :'#EF5350',
+    '200' :'#E040FB',
+    '300' :'#009688',
+    '400' :'#2E7D32',
+    '500' :'#00796B',
+    '600' :'#827717',
+    '700' :'#A1887F',
+    '800' :'#795548',
+    '900' :'#607D8B',
+    'A100':'#424242',
+    'A200':'#78909C',
+    'A400':'#424242',
+    'A700':'#424242',
+    'A800':'#78909C',
+    'contrastDefaultColor': 'light'
+  });
 
   $routeProvider
     .when('/', {
