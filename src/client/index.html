@@ -20,6 +20,9 @@
     <span flex="5"></span>
     <h3 ng-show="currentUser">Hello, <strong>{{ currentUser.username }}</strong></h3>
       <span flex></span>
+      <h3 ng-show="currentUser">Remaining: <strong class="md-whiteframe-1dp">{{ currentUser.tasks.length }}</strong></h3><span flex></span>
+      <h3 ng-show="currentUser">Completed: <strong style="color: #43A047;" class="md-whiteframe-1dp">0</strong></h3><span flex></span>
+      <h3 ng-show="currentUser">Failed: <strong style="color: #B71C1C;" class="md-whiteframe-1dp">0</strong></h3><span flex></span>
       <md-button ng-controller="logoutController" ng-show="currentUser" ng-click="logout()">Logout</md-button>
       <md-button ng-controller="dialogLoginController" ng-hide="currentUser" ng-click="showForm($event)">Login</md-button>
       <md-button ng-controller="dialogRegisterController" ng-hide="currentUser" ng-click="showForm($event)">Register</md-button>
