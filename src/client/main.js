@@ -4,9 +4,10 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
 
   $mdThemingProvider.theme('default')
     .primaryPalette('deep-orange')
-    .accentPalette('deep-orange')
+    .accentPalette('orange')
     .warnPalette('red')
-    .dark();
+    .dark()
+    .foregroundPalette['3'] = 'rgba(255,255,255,0.8)';
 
   $mdThemingProvider.definePalette('tile', {
     '50'  :'#F44336',

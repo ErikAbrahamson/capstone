@@ -26,10 +26,7 @@
           $scope.taskForm.title,
           $scope.taskForm.description,
           $scope.taskForm.deadline,
-          $scope.taskForm.priority,
-          $scope.taskForm.complete,
-          $scope.taskForm.punishment_type.donation,
-          $scope.taskForm.punishment_type.text_message
+          $scope.taskForm.priority
         )
 
         .then(function () {
