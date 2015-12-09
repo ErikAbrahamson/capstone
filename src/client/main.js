@@ -5,8 +5,8 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('deep-orange')
     .accentPalette('deep-orange')
-    .warnPalette('red');
-    // .dark();
+    .warnPalette('red')
+    .dark();
 
   $mdThemingProvider.definePalette('tile', {
     '50'  :'#F44336',
