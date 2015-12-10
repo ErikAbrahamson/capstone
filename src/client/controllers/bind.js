@@ -14,7 +14,6 @@
 
           .then(function () {
             $rootScope.tasks = TaskService.getUserTasks();
-            console.log($rootScope.tasks);
             $location.path('/');
           })
 

@@ -31,8 +31,6 @@
 
         .then(function () {
           $rootScope.getTasks();
-          TileService.buildTiles($rootScope.tasks);
-          console.log(TileService.buildTiles($rootScope.getTasks()));
           $scope.successToast();
           $mdDialog.hide();
           $location.path('/');
