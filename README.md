@@ -33,3 +33,4 @@ The MVP will be a visually clean and testable Material MEAN stack application wi
 ## Second Iteration
 
 - Refactor using SailsJS
+- Social Auth for consequence system
