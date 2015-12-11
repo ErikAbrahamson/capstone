@@ -1,5 +1,8 @@
-# Name: TBD  
+# Pavlov
+#### A Task Management App That Holds You Accountable  
 [![Build Status](https://travis-ci.org/ErikAbrahamson/capstone.svg?branch=master)](https://travis-ci.org/ErikAbrahamson/capstone) [![Coverage Status](https://coveralls.io/repos/ErikAbrahamson/capstone/badge.svg?branch=master&service=github)](https://coveralls.io/github/ErikAbrahamson/capstone?branch=master)
+
+ ![Alt text](example.jpg)
 
 ## Summary
 
@@ -27,7 +30,6 @@ This will be a SPA task management app utilizing negative reinforcement in order
 
 The MVP will be a visually clean and testable Material MEAN stack application with full API integration. Users will be able to manage their tasks and successfully route payments to a service of their choosing.
 
-## Additional features
+## Second Iteration
 
-- Material Design
-- (Possibly)
+- Refactor using SailsJS
