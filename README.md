@@ -11,7 +11,6 @@ This will be a SPA task management app utilizing negative reinforcement in order
 ## technologies
 
 - AngularJS
-- Original RESTful API
 - Angular Material
 - MongoDB
 - Node.js + Express
