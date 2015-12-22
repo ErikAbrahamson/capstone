@@ -25,6 +25,7 @@ This will be a SPA task management app utilizing negative reinforcement in order
 - Stripe
 - Twilio
 
+
 ## MVP
 
 The MVP will be a visually clean and testable Material MEAN stack application with full API integration. Users will be able to manage their tasks and successfully route payments to a service of their choosing.
@@ -33,3 +34,4 @@ The MVP will be a visually clean and testable Material MEAN stack application wi
 
 - Refactor using SailsJS
 - Social Auth for consequence system
+- Severity range
