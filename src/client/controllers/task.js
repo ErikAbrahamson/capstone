@@ -9,7 +9,7 @@
         $scope.successToast = function($event) {
           $mdToast.show(
             $mdToast.simple()
-            .content('Task added!!')
+            .content('Task added!')
             .position('top right')
             .hideDelay(3000)
           );
